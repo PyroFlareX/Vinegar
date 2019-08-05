@@ -4,10 +4,11 @@
 
 CubeRenderer::CubeRenderer()
 {
-	sf::Image img;
+	
+	img.create(16, 16, sf::Color::Red);
 
-	img = resources::TexManager.getSheet();
-	img.saveToFile("test.png");
+	//img = resources::TexManager.getSheet();
+	//img.saveToFile("test.png");
 
 	m_shader.load("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
 
@@ -75,9 +76,17 @@ CubeRenderer::CubeRenderer()
 		22, 23, 20
 	};
 
-	std::vector<float> texCoords;
+	std::vector<float> texCoords 
+	{ 
+	0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
+	0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
+	0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
+	0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
+	0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
+	0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f
+	};
 	
-	for (auto& f : resources::TexManager.getTexCoords("grass_side"))
+	/*for (auto& f : resources::TexManager.getTexCoords("grass_side"))
 	{
 		texCoords.push_back(f);
 	}
@@ -100,7 +109,7 @@ CubeRenderer::CubeRenderer()
 	for (auto& f : resources::TexManager.getTexCoords("dirt"))
 	{
 		texCoords.push_back(f);
-	}
+	}*/
 
 
 

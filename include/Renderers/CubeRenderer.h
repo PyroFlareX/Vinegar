@@ -19,5 +19,6 @@ private:
 	Shader m_shader;
 	Model m_cubeModel;
 	Texture tex;
+	sf::Image img;
 };
 
