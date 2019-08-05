@@ -1,5 +1,7 @@
-#include "Context.h"
-#include <iostream>
+#ifdef _WIN32
+
+#include "../../../../include/Backends/PC/GL/GLContext.h"
+
 #include "glad/glad/glad.h"
 
 Context::Context()
@@ -8,7 +10,7 @@ Context::Context()
 	settings.majorVersion = 4;
 	settings.minorVersion = 5;
 	settings.depthBits = 24;
-    context.create(sf::VideoMode(WIDTH, HEIGHT), "TechnoMagica", sf::Style::Default, settings);
+    context.create(sf::VideoMode(WIDTH, HEIGHT), "Vinegar", sf::Style::Default, settings);
     //context.setFramerateLimit(60);
 	context.setMouseCursorGrabbed(true);
 	context.setMouseCursorVisible(false);
@@ -27,7 +29,6 @@ sf::RenderWindow* Context::getContext()
 
 void Context::clear()
 {
-    //context.clear(sf::Color::Black);
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -59,3 +60,5 @@ bool Context::isOpen()
 {
     return context.isOpen();
 }
+
+#endif // _WIN32

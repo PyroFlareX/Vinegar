@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics/Image.hpp>
-#include "../glad/glad/glad.h"
+#include "../../src/Backends/PC/GL/glad/glad/glad.h"
 
 class Texture
 {

@@ -1,3 +1,4 @@
+#ifdef _WIN32
 #ifndef CONTEXT_H
 #define CONTEXT_H
 
@@ -27,3 +28,4 @@ class Context
 };
 
 #endif // CONTEXT_H
+#endif // _WIN32

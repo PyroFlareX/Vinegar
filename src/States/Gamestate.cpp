@@ -1,9 +1,8 @@
-#include "GameState.h"
-
-#include <iostream>
+#include "../../include/States/Gamestate.h"
 
 
-GameState::GameState(Application& app)	: m_world(app.getCam(), m_player),	Basestate(app)
+
+GameState::GameState(Application& app)	: /*m_world(app.getCam(), m_player),*/	Basestate(app)
 {
 	TryPause = false;
 }
@@ -30,9 +29,9 @@ bool GameState::input()
 	return false;
 }
 
-void GameState::update(sf::RenderWindow* window, float dt)
+void GameState::update(float dt)
 {
-	if (window->hasFocus() && !TryPause)
+	/*if (window->hasFocus() && !TryPause)
 	{
 		isPaused = false;
 	}
@@ -40,12 +39,12 @@ void GameState::update(sf::RenderWindow* window, float dt)
 	{
 		isPaused = true;
 		TryPause = false;
-	}
+	}*/
 
 	if (!isPaused)
 	{
-		m_player.update(dt, window);
-		m_world.update();
+		m_player.update(dt);
+		//m_world.update();
 	}
 }
 
@@ -76,7 +75,7 @@ void GameState::render(Renderer* renderer)
 		renderer->drawCube(entity);
 	}
 
-	m_world.renderWorld(app.getCam(), *renderer);
+	//m_world.renderWorld(app.getCam(), *renderer);
 }
 
 void GameState::tryPause()

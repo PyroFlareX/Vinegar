@@ -1,7 +1,6 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <SFML/Graphics.hpp>
 
 namespace Input
 {
@@ -9,15 +8,15 @@ namespace Input
 	{
 		bool up;
 		bool down;
-		bool left;
-		bool right;
-		bool backwards;
-		bool forth;
+		float LX;
+		float LY;
+		float RX;
+		float RY;
 		bool pause;
 		bool accel;
 	};
 
-        Inputs getInput();
+	Inputs getInput();
 };
 
 #endif // INPUT_H

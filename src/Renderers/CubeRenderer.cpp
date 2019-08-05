@@ -1,6 +1,6 @@
-#include "CubeRenderer.h"
+#include "../../include/Renderers/CubeRenderer.h"
 
-#include "../Util/ResourceManager.h"
+#include "../../include/Engine/Resources/ResourceManager.h"
 
 CubeRenderer::CubeRenderer()
 {

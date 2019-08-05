@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#include "Application.h"
+#include "../include/Application.h"
 
 int main()
 {

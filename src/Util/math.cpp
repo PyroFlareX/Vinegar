@@ -1,6 +1,6 @@
-#include "math.h"
+#include "../../include/Util/math.h"
 
-#include "../Camera.h"
+#include "../../include/Camera.h"
 
 const glm::mat4 makeViewMatrix(const Camera & camera)
 {
@@ -28,11 +28,7 @@ const glm::mat4 makeModelMatrix(const Entity& entity)
 	return matrix;
 }
 
-/*constexpr glm::mat4 makeProjectionMatrix(const float fov)
+const glm::mat4 makeProjectionMatrix(float fov, int x, int y)
 {
-	return glm::perspective(glm::radians(fov), (800.0f / 600.0f), 0.1f, 1000.0f);
-}*/
-const glm::mat4 makeProjectionMatrix(float fov, sf::Vector2i winSize)
-{
-	return glm::perspective(glm::radians(fov), ((float)winSize.x / winSize.y), 0.001f, 1000.0f);
+	return glm::perspective(glm::radians(fov), float(x) / y, 0.001f, 1000.0f);
 }

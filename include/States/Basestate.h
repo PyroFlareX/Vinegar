@@ -2,7 +2,6 @@
 #define BASESTATE_H
 
 #include "../Renderers/Renderer.h"
-#include <SFML/Graphics.hpp>
 #include "../Camera.h"
 
 class Application;
@@ -13,7 +12,7 @@ public:
 	Basestate(Application& app)	:	app(app)	{};
 
     virtual bool input() = 0;
-    virtual void update(sf::RenderWindow* window, float dt) = 0;
+    virtual void update(float dt) = 0;
 	virtual void lateUpdate(Camera* cam) = 0;
 	virtual void render(Renderer* renderer) = 0;
 

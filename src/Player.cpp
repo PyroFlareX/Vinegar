@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "../include/Player.h"
 
 
 Player::Player()
@@ -13,20 +13,9 @@ void Player::getInput(Input::Inputs vInput)
 	glm::vec3 change = glm::vec3(0.0f);
 	float speed = 1.0f;
 
-	if (vInput.accel)
-	{
-		speed *= 3.0f;
-	}
-	if (vInput.right)
-	{
-		change.x += glm::cos(glm::radians(rot.y));
-		change.z += glm::sin(glm::radians(rot.y));
-	}
-	if (vInput.left)
-	{
-		change.x += -glm::cos(glm::radians(rot.y));
-		change.z += -glm::sin(glm::radians(rot.y));
-	}
+	change.x += glm::cos(glm::radians(rot.y)) * speed * vInput.LX;
+	change.z += glm::sin(glm::radians(rot.y)) * speed * vInput.LX;
+
 	if (vInput.up)
 	{
 		jump();
@@ -35,19 +24,32 @@ void Player::getInput(Input::Inputs vInput)
 	{
 		velocity.y--;
 	}
-	if (vInput.forth)
+
+	//Backwards
+	if (vInput.LY < 0)
 	{
-		change.x += -glm::cos(glm::radians(rot.y + 90)) * speed;
-		change.z += -glm::sin(glm::radians(rot.y + 90)) * speed;
-	}
-	if (vInput.backwards)
-	{
-		change.x += glm::cos(glm::radians(rot.y + 90));
-		change.z += glm::sin(glm::radians(rot.y + 90));
+		change.x += -glm::cos(glm::radians(rot.y + 90)) * speed * vInput.LY;
+		change.z += -glm::sin(glm::radians(rot.y + 90)) * speed * vInput.LY;
 	}
 
+	//Movement
+	if (vInput.accel)
+	{
+		speed *= 3.0f;
+	}
+
+	//Forward
+	if (vInput.LY > 0)
+	{
+		change.x += -glm::cos(glm::radians(rot.y + 90)) * speed * vInput.LY;
+		change.z += -glm::sin(glm::radians(rot.y + 90)) * speed * vInput.LY;
+	}
 
 	velocity += change;
+	
+	//Rotation
+	rot.x -= (float)vInput.RY * 0.0005f;
+	rot.y += (float)vInput.RX * 0.0005f;
 }
 
 void Player::jump()
@@ -55,13 +57,13 @@ void Player::jump()
 	velocity.y++;
 }
 
-void Player::update(float dt, sf::RenderWindow* window)
+void Player::update(float dt)
 {
-	static auto lastMousePosition = sf::Mouse::getPosition(*window);
-	auto offset = sf::Mouse::getPosition() - lastMousePosition;
+	//static auto lastMousePosition = sf::Mouse::getPosition(*window);
+	//auto offset = sf::Mouse::getPosition() - lastMousePosition;
 
-	rot.x += (float)offset.y * 0.05f;
-	rot.y += (float)offset.x * 0.05f;
+	//rot.x += (float)offset.y * 0.05f;
+	//rot.y += (float)offset.x * 0.05f;
 
 
 	//velocity.y -= 0.7f;
@@ -70,12 +72,12 @@ void Player::update(float dt, sf::RenderWindow* window)
 	velocity = glm::vec3(0.0f);
 
 
-	auto cx = static_cast<int>(window->getSize().x / 2);
-	auto cy = static_cast<int>(window->getSize().y / 2);
+	//auto cx = static_cast<int>(window->getSize().x / 2);
+	//auto cy = static_cast<int>(window->getSize().y / 2);
 
-	sf::Mouse::setPosition({ cx, cy }, *window);
+	//sf::Mouse::setPosition({ cx, cy }, *window);
 
-	lastMousePosition = sf::Mouse::getPosition();
+	//lastMousePosition = sf::Mouse::getPosition();
 
 	//std::cout << pos.x << " " << pos.y << " " << pos.z << "\n";
 }

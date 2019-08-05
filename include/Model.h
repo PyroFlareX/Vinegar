@@ -1,7 +1,7 @@
 #pragma once
 
 #include "mesh.h"
-#include "glad/glad/glad.h"
+#include "../src/Backends/PC/GL/glad/glad/glad.h"
 
 class Model
 {

@@ -1,12 +1,11 @@
 #pragma once
 
-#include "../Texture/Texture.h"
+#include "../../Texture/Texture.h"
 #include <vector>
 #include <unordered_map>
 #include <array>
-#include "FileUtil.h"
-#include "../mesh.h"
-#include "../World/Block/Block.h"
+//#include "../../mesh.h"
+//#include "../World/Block/Block.h"
 
 class TextureManager
 {
@@ -27,7 +26,7 @@ private:
 	sf::Image sheet;
 };
 
-class BlockManager
+/*class BlockManager
 {
 public:
 	BlockManager();
@@ -41,12 +40,12 @@ private:
 
 	std::unordered_map<std::string, Block> m_blockMap;
 };
-
+*/
 #ifndef _res
 #define _res
 namespace resources
 {
 	extern TextureManager TexManager;
-	extern BlockManager BlockDatabase;
+	//extern BlockManager BlockDatabase;
 }
 #endif

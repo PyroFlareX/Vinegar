@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Entity.h"
-#include "Util/Input.h"
+#include "Backends/Input.h"
 
 class Player : public Entity
 {
@@ -13,7 +13,7 @@ public:
 
 	void jump();
 
-	void update(float dt, sf::RenderWindow* window);
+	void update(float dt);
 
 	~Player();
 private:

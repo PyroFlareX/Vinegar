@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../World/Chunk/ChunkMesh.h"
+//#include "../World/Chunk/ChunkMesh.h"
+#include "../mesh.h"
 #include "../Camera.h"
 #include "../Shaders/Shader.h"
 #include "../Texture/Texture.h"
@@ -10,7 +11,7 @@ class ChunkRenderer
 public:
 	ChunkRenderer();
 
-	void addChunk(ChunkMesh& mesh);
+	//void addChunk(ChunkMesh& mesh);
 	void render(Camera& cam);
 
 	~ChunkRenderer();

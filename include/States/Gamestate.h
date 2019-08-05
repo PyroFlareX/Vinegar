@@ -2,11 +2,11 @@
 #define GAMESTATE_H
 
 #include "Basestate.h"
-#include "../World/World.h"
+//#include "../World/World.h"
+
 #include "../Player.h"
 #include "../Application.h"
-
-#include "../Util/Input.h"
+#include "../Backends/Input.h"
 #include "../Util/math.h"
 
 class GameState : public Basestate
@@ -15,7 +15,7 @@ public:
     GameState(Application& app);
 
     bool input() override;
-    void update(sf::RenderWindow* window, float dt) override;
+    void update(float dt) override;
 	void lateUpdate(Camera* cam) override;
 	void render(Renderer* renderer) override;
 
@@ -32,7 +32,7 @@ private:
 	Input::Inputs vInput;
 
 	Player m_player;
-	World m_world;
+	//World m_world;
 };
 
 #endif // GAMESTATE_H

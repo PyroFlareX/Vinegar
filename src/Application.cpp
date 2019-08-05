@@ -1,10 +1,9 @@
-#include "Application.h"
+#include "../include/Application.h"
 
-#include "States/Gamestate.h"
-#include "Shaders/Shader.h"
+#include "../include/States/Gamestate.h"
 
 
-Application::Application()	:	m_camera(m_context.getContext())
+Application::Application()
 {
 	pushState(std::make_unique<GameState>(*this));
 }
@@ -35,7 +34,7 @@ void Application::RunLoop()
 		currentState().input();
 		
         /// Update
-        currentState().update(p_window, dt.asSeconds());
+        currentState().update(dt.asSeconds());
 		currentState().lateUpdate(&m_camera);
 		m_camera.update();
 
@@ -44,7 +43,7 @@ void Application::RunLoop()
 
         /// Render
 		m_context.clear();
-		m_renderer.render(m_camera, p_window);
+		m_renderer.render(m_camera);
 
 		
         m_context.update();

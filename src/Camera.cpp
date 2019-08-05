@@ -1,16 +1,13 @@
-#include "Camera.h"
+#include "../include/Camera.h"
 
-Camera::Camera(sf::RenderWindow* p_win)
+Camera::Camera()
 {
-	p_window = p_win;
 	lerp = 2.5f;
 
-	proj = makeProjectionMatrix(80.0f, (sf::Vector2i)(p_window->getSize()));
+	proj = makeProjectionMatrix(80.0f, 800, 600);
 
 	pos = glm::vec3(0.0f, 0.0f, 3.0f);
 	rot = glm::vec3(0.0f);
-
-	//p_window->setFramerateLimit(60);
 }
 
 void Camera::follow(Entity& entity)

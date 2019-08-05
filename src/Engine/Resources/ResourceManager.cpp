@@ -1,4 +1,4 @@
-#include "ResourceManager.h"
+#include "../../../include/Engine/Resources/ResourceManager.h"
 
 TextureManager::TextureManager()
 {
@@ -83,7 +83,7 @@ TextureManager::~TextureManager()
 
 
 
-BlockManager::BlockManager()
+/*BlockManager::BlockManager()
 {
 	/*Block block(BlockId::DIRT, "dirt");
 	addBlock(block, "dirt");
@@ -91,14 +91,14 @@ BlockManager::BlockManager()
 	addBlock(block, "grass");
 	Block block(BlockId::STONE, "stone");
 	addBlock(block, "stone");*/
-}
+/*}
 
 void BlockManager::addBlock(Block& block, const std::string& blockName)
 {
 	m_blockMap.insert({ blockName, block });
 }
 
-Block & BlockManager::getBlock(const std::string & blockName)
+Block& BlockManager::getBlock(const std::string& blockName)
 {
 	return m_blockMap.find(blockName)->second;
 }
@@ -107,9 +107,9 @@ BlockManager::~BlockManager()
 {
 
 }
-
+*/
 namespace resources
 {
 	TextureManager TexManager;
-	BlockManager BlockDatabase;
+	//BlockManager BlockDatabase;
 }

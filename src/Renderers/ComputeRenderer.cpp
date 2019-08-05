@@ -1,4 +1,4 @@
-#include "ComputeRenderer.h"
+#include "../../include/Renderers/ComputeRenderer.h"
 
 ComputeRenderer::ComputeRenderer()
 {
