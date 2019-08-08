@@ -34,7 +34,10 @@
     <ClCompile Include="src\Backends\PC\GL\GLContext.cpp" />
     <ClCompile Include="src\Backends\PC\PCInput.cpp" />
     <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\Engine\Resources\ResourceManager.cpp" />
+    <ClCompile Include="src\Engine\Registries\ResourceManager.cpp" />
+    <ClCompile Include="src\Engine\Resources\Image.cpp" />
+    <ClCompile Include="src\Engine\Types\Types.cpp" />
+    <ClCompile Include="src\Engine\Util\UtilFunctions.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Renderers\ChunkRenderer.cpp" />
@@ -53,7 +56,10 @@
     <ClInclude Include="include\Backends\PC\GL\GLContext.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\Engine\Engine.h" />
-    <ClInclude Include="include\Engine\Resources\ResourceManager.h" />
+    <ClInclude Include="include\Engine\Registries\ResourceManager.h" />
+    <ClInclude Include="include\Engine\Resources\Image.h" />
+    <ClInclude Include="include\Engine\Types\Types.h" />
+    <ClInclude Include="include\Engine\Util\UtilFunctions.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\mesh.h" />
     <ClInclude Include="include\Model.h" />
@@ -144,6 +150,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <IncludePath>Z:\Programming\Github\Vinegar\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>Z:\Programming\Github\Vinegar\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -160,6 +169,9 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalIncludeDirectories>E:\Programming\Libraries\SFML-2.5.1\include;E:\Programming\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -199,6 +211,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>E:\Programming\Libraries\SFML-2.5.1\include;E:\Programming\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

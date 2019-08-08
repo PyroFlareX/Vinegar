@@ -19,7 +19,7 @@ Context::Context()
 
 Context::~Context()
 {
-    //context.close();
+    context.close();
 }
 
 sf::RenderWindow* Context::getContext()

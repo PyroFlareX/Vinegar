@@ -1,6 +1,6 @@
 #include "../../include/Renderers/CubeRenderer.h"
 
-#include "../../include/Engine/Resources/ResourceManager.h"
+#include "../../include/Engine/Registries/ResourceManager.h"
 
 CubeRenderer::CubeRenderer()
 {
@@ -14,7 +14,7 @@ CubeRenderer::CubeRenderer()
 
 	tex.loadFromImage(img);
 
-	tex.bind();
+	//tex.bind();
 
 	std::vector<float> vertexCoords
 	{

@@ -5,6 +5,7 @@
 GameState::GameState(Application& app)	: /*m_world(app.getCam(), m_player),*/	Basestate(app)
 {
 	TryPause = false;
+	app.getCam().follow(m_player);
 }
 
 GameState::~GameState()
@@ -14,8 +15,8 @@ GameState::~GameState()
 
 bool GameState::input()
 {
-	if (!isPaused)
-	{
+	//if (!isPaused)
+	//{
 		vInput = Input::getInput();
 
 		m_player.getInput(vInput);
@@ -25,7 +26,7 @@ bool GameState::input()
 		{
 			tryPause();
 		}
-	}
+	//}
 	return false;
 }
 
@@ -41,16 +42,14 @@ void GameState::update(float dt)
 		TryPause = false;
 	}*/
 
-	if (!isPaused)
-	{
-		m_player.update(dt);
-		//m_world.update();
-	}
+
+	m_player.update(dt);
+//	m_world.update();
 }
 
 void GameState::lateUpdate(Camera* cam)
 {
-	cam->follow(m_player);
+
 }
 
 void GameState::render(Renderer* renderer)

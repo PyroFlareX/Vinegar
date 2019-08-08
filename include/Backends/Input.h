@@ -8,10 +8,10 @@ namespace Input
 	{
 		bool up;
 		bool down;
-		float LX;
-		float LY;
-		float RX;
-		float RY;
+		int LX;
+		int LY;
+		int RX;
+		int RY;
 		bool pause;
 		bool accel;
 	};

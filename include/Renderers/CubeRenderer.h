@@ -18,7 +18,7 @@ private:
 	std::vector<Entity> m_queue;
 	Shader m_shader;
 	Model m_cubeModel;
-	Texture tex;
 	sf::Image img;
+	Texture tex;
 };
 

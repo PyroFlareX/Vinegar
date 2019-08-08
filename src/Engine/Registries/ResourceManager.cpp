@@ -1,4 +1,4 @@
-#include "../../../include/Engine/Resources/ResourceManager.h"
+#include "../../../include/Engine/Registries/ResourceManager.h"
 
 TextureManager::TextureManager()
 {

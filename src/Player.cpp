@@ -3,7 +3,7 @@
 
 Player::Player()
 {
-	pos = glm::vec3(0.0f, 32.0f, 1.0f);
+	pos = glm::vec3(0.0f, 0.0f, 1.0f);
 	rot = glm::vec3(0.0f, 0.0f, 0.0f);
 	velocity = glm::vec3(0.0f, 0.0f, 0.0f);
 }
@@ -43,13 +43,14 @@ void Player::getInput(Input::Inputs vInput)
 	{
 		change.x += -glm::cos(glm::radians(rot.y + 90)) * speed * vInput.LY;
 		change.z += -glm::sin(glm::radians(rot.y + 90)) * speed * vInput.LY;
+		std::cout << "test\n";
 	}
 
 	velocity += change;
 	
 	//Rotation
-	rot.x -= (float)vInput.RY * 0.0005f;
-	rot.y += (float)vInput.RX * 0.0005f;
+	rot.x += vInput.RY * 0.05f;
+	rot.y += vInput.RX * 0.05f;
 }
 
 void Player::jump()
@@ -79,7 +80,7 @@ void Player::update(float dt)
 
 	//lastMousePosition = sf::Mouse::getPosition();
 
-	//std::cout << pos.x << " " << pos.y << " " << pos.z << "\n";
+	std::cout << pos.x << " " << pos.y << " " << pos.z << "\n";
 }
 
 Player::~Player()

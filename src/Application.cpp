@@ -16,7 +16,7 @@ void Application::RunLoop()
 	float frames = 0.0f;
 	m_context.clear();
 	m_context.update();
-    sf::RenderWindow* p_window = m_context.getContext();
+    //sf::RenderWindow* p_window = m_context.getContext();
 //===================================================================================
 	
 
@@ -75,6 +75,13 @@ void Application::handleEvents()
 {
     sf::Event e;
 	sf::View v;
+	sf::RenderWindow* window = m_context.getContext();
+	auto cx = static_cast<int>(window->getSize().x / 2);
+	auto cy = static_cast<int>(window->getSize().y / 2);
+
+	//sf::Mouse::setPosition({ cx, cy }, *window);
+
+
     while(m_context.getContext()->pollEvent(e))
         {
         switch(e.type)
