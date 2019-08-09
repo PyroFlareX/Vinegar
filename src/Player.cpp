@@ -60,25 +60,10 @@ void Player::jump()
 
 void Player::update(float dt)
 {
-	//static auto lastMousePosition = sf::Mouse::getPosition(*window);
-	//auto offset = sf::Mouse::getPosition() - lastMousePosition;
-
-	//rot.x += (float)offset.y * 0.05f;
-	//rot.y += (float)offset.x * 0.05f;
-
-
 	//velocity.y -= 0.7f;
 
 	pos += velocity * dt;
 	velocity = glm::vec3(0.0f);
-
-
-	//auto cx = static_cast<int>(window->getSize().x / 2);
-	//auto cy = static_cast<int>(window->getSize().y / 2);
-
-	//sf::Mouse::setPosition({ cx, cy }, *window);
-
-	//lastMousePosition = sf::Mouse::getPosition();
 
 	std::cout << pos.x << " " << pos.y << " " << pos.z << "\n";
 }

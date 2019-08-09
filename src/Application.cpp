@@ -75,12 +75,6 @@ void Application::handleEvents()
 {
     sf::Event e;
 	sf::View v;
-	sf::RenderWindow* window = m_context.getContext();
-	auto cx = static_cast<int>(window->getSize().x / 2);
-	auto cy = static_cast<int>(window->getSize().y / 2);
-
-	//sf::Mouse::setPosition({ cx, cy }, *window);
-
 
     while(m_context.getContext()->pollEvent(e))
         {
