@@ -19,7 +19,8 @@ namespace vn
 
 	void Image::create(unsigned int x, unsigned int y, const u8vec4& color)
 	{
-
+		m_size = vec2(x, y);
+		//std::vector<u8vec4>newImage()
 	}
 
 	void Image::create(unsigned int x, unsigned int y, const u8vec4* pixels)
@@ -60,12 +61,12 @@ namespace vn
 
 	void Image::setPixel(unsigned int x, unsigned int y, const u8vec4& color)
 	{
-
+		m_pixels[toIndex(x, y)] = color;
 	}
 
 	u8vec4 Image::getPixel(unsigned int x, unsigned int y) const
 	{
-		return u8vec4();
+		return m_pixels.at(toIndex(x, y));
 	}
 
 	void Image::flipVertically()
@@ -76,6 +77,18 @@ namespace vn
 	void Image::flipHorizontally()
 	{
 
+	}
+
+	const int Image::toIndex(const unsigned int x, const unsigned int y) const
+	{
+		int index = 0;
+
+		index = m_size.x * x + y;
+		if (index >= (m_size.x * m_size.y))
+		{
+			return -1;
+		}
+		return index;
 	}
 
 }

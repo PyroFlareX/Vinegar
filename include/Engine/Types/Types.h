@@ -45,6 +45,7 @@ namespace vn
 	};
 }
 
+//For hashing (e.g. usage in std::maps)
 namespace std
 {
 	template<>
