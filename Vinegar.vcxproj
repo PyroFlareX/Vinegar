@@ -59,6 +59,7 @@
     <ClInclude Include="include\Engine\Registries\ResourceManager.h" />
     <ClInclude Include="include\Engine\Resources\Image.h" />
     <ClInclude Include="include\Engine\Types\Types.h" />
+    <ClInclude Include="include\Engine\Util\Loaders.h" />
     <ClInclude Include="include\Engine\Util\UtilFunctions.h" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\mesh.h" />

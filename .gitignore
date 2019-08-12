@@ -349,3 +349,4 @@ healthchecksdb
 MigrationBackup/
 
 *.dll
+~AutoRecover.Vinegar.vcxproj
