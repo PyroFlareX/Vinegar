@@ -1,21 +1,33 @@
 #pragma once
 
 #include <vector>
+#include "../Types/Types.h"
 
-struct Mesh
+//	@TODO Finish this and implement model loading (preferably with Assimp)
+namespace vn
 {
-	std::vector<float> vertices;
-	std::vector<unsigned int> indicies;
-	std::vector<float> texCoords;
-};
-
-struct renderInfo
-{
-	unsigned int VAO = 0;
-	int indiciesCount = 0;
-	inline void reset()
+	struct Vertex
 	{
-		VAO = 0;
-		indiciesCount = 0;
-	}
-};
+		vn::vec3 position;
+		vn::vec3 normal;
+		vn::vec2 uv;
+	};
+
+	struct Mesh
+	{
+		std::vector<Vertex> vertices;
+		std::vector<unsigned int> indicies;
+		std::vector<float> texCoords;
+	};
+
+	struct renderInfo
+	{
+		unsigned int VAO = 0;
+		int indiciesCount = 0;
+		inline void reset()
+		{
+			VAO = 0;
+			indiciesCount = 0;
+		}
+	};
+}
