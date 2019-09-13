@@ -1,8 +1,7 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
-#include <string>
 
-#include "../include/Application.h"
+
+#include "Application.h"
 
 int main()
 {
@@ -11,7 +10,7 @@ int main()
 
     Application app;
     app.RunLoop();
-
+	//std::cout << "test\n";
 	system("pause");
 
     return 0;

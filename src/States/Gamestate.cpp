@@ -1,10 +1,11 @@
-#include "../../include/States/Gamestate.h"
+#include "Gamestate.h"
 
 
 
 GameState::GameState(Application& app)	: /*m_world(app.getCam(), m_player),*/	Basestate(app)
 {
 	TryPause = false;
+	app.getCam().follow(m_player);
 }
 
 GameState::~GameState()
@@ -14,18 +15,18 @@ GameState::~GameState()
 
 bool GameState::input()
 {
-	if (!isPaused)
-	{
-		vInput = Input::getInput();
+	//if (!isPaused)
+	//{
+		//vInput = Input::getInput();
 
-		m_player.getInput(vInput);
+		//m_player.getInput(vInput);
 
 		
-		if (vInput.pause)
+		//if (vInput.pause)
 		{
-			tryPause();
+			//tryPause();
 		}
-	}
+	//}
 	return false;
 }
 
@@ -41,16 +42,14 @@ void GameState::update(float dt)
 		TryPause = false;
 	}*/
 
-	if (!isPaused)
-	{
-		m_player.update(dt);
-		//m_world.update();
-	}
+
+	m_player.update(dt);
+//	m_world.update();
 }
 
 void GameState::lateUpdate(Camera* cam)
 {
-	cam->follow(m_player);
+
 }
 
 void GameState::render(Renderer* renderer)
@@ -69,7 +68,7 @@ void GameState::render(Renderer* renderer)
 	};
 	for (int i = 0; i < 10; ++i)
 	{
-		Entity entity;
+		vn::Transform entity;
 		entity.pos = cubePositions[i];
 		//entity.rot.x = i * 20.0f;
 		renderer->drawCube(entity);

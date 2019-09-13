@@ -1,20 +1,20 @@
-#include "../../include/Renderers/CubeRenderer.h"
+#include "CubeRenderer.h"
 
-#include "../../include/Engine/Resources/ResourceManager.h"
+//#include "../../Engine/Registries/ResourceManager.h"
 
 CubeRenderer::CubeRenderer()
 {
 	
-	img.create(16, 16, sf::Color::Red);
+	//img.create(16, 16, sf::Color::Red);
 
 	//img = resources::TexManager.getSheet();
 	//img.saveToFile("test.png");
 
 	m_shader.load("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
 
-	tex.loadFromImage(img);
+	//tex.loadFromImage(img);
 
-	tex.bind();
+	//tex.bind();
 
 	std::vector<float> vertexCoords
 	{
@@ -113,30 +113,30 @@ CubeRenderer::CubeRenderer()
 
 
 
-	m_cubeModel.addData({ vertexCoords, indices, texCoords});
+	//m_cubeModel.addData({ vertexCoords, indices, texCoords});
 }
 
-void CubeRenderer::addCube(Entity& entity)
+void CubeRenderer::addCube(vn::Transform& entity)
 {
 	m_queue.push_back(entity);
 }
 
 void CubeRenderer::render(Camera& cam)
 {
-	m_shader.use();
-	m_cubeModel.bindVAO();
-	tex.bind();
+	//m_shader.use();
+	//m_cubeModel.bindVAO();
+	//tex.bind();
 
-	m_shader.setMat4("view", cam.getViewMatrix(cam));
-	m_shader.setMat4("proj", cam.getProjMatrix());
+	//m_shader.setMat4("view", cam.getViewMatrix(cam));
+	//m_shader.setMat4("proj", cam.getProjMatrix());
 
-	glEnable(GL_CULL_FACE);
+	//glEnable(GL_CULL_FACE);
 
 	for (auto& entity : m_queue)
 	{
-		m_shader.setMat4("model", makeModelMatrix(entity));
+		//m_shader.setMat4("model", makeModelMatrix(entity));
 
-		glDrawElements(GL_TRIANGLES, m_cubeModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
+		//glDrawElements(GL_TRIANGLES, m_cubeModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
 	m_queue.clear();
 }

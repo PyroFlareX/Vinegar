@@ -1,11 +1,11 @@
-#include "../../include/Renderers/Renderer.h"
+#include "Renderer.h"
 
 Renderer::Renderer()
 {
     //ctor
 }
 
-void Renderer::drawCube(Entity& entity)
+void Renderer::drawCube(vn::Transform& entity)
 {
 	m_cubeRenderer.addCube(entity);
 }

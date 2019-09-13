@@ -1,4 +1,4 @@
-#include "../../include/Renderers/ChunkRenderer.h"
+#include "ChunkRenderer.h"
 //#include "../Util/ResourceManager.h"
 
 ChunkRenderer::ChunkRenderer()
