@@ -24,12 +24,13 @@ namespace vn
 		return vec4(((pos2 - pos1) * gradient) + pos1);
 	}
 
-	inline glm::mat4 makeProjectionMatrix(const float fov, const vec2 contextSize)
+	const mat4 makeProjectionMatrix(const float fov, const vec2 contextSize)
 	{
-		return glm::perspective(glm::radians(fov), contextSize.x / contextSize.y, 0.001f, 1000.0f);
+		mat4 proj = glm::perspective(glm::radians(fov), contextSize.x / contextSize.y, 0.001f, 1000.0f);
+		return proj;
 	}
 
-	const glm::mat4 makeViewMatrix(const Transform& camera)
+	const mat4 makeViewMatrix(const Transform& camera)
 	{
 		mat4 matrix = mat4(1.0f);
 

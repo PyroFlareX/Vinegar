@@ -8,13 +8,10 @@ Context::Context()
 	// Init GLFW
     glfwInit();
     // Set all the required options for GLFW
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    context = glfwCreateWindow(WIDTH, HEIGHT, "Vinegar", nullptr, nullptr);
+    context = glfwCreateWindow(WIDTH, HEIGHT, "Vinegar", 0, NULL);
     glfwMakeContextCurrent(context);
 
     
