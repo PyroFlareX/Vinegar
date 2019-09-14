@@ -7,7 +7,7 @@
 
 namespace vn
 {
-	std::string getFileString(const std::string& filePath)
+	inline std::string getFileString(const std::string& filePath)
 	{
 		std::ifstream inFile(filePath);
 		if (!inFile.is_open())
