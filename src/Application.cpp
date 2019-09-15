@@ -1,6 +1,6 @@
-#include "../include/Application.h"
+#include "Application.h"
 
-#include "../include/States/Gamestate.h"
+#include "States/Gamestate.h"
 
 
 Application::Application()
@@ -10,13 +10,12 @@ Application::Application()
 
 void Application::RunLoop()
 {
-	sf::Clock timer;
-	sf::Time dt;
+	//sf::Clock timer;
+	//sf::Time dt;
 	float t = 0;
 	float frames = 0.0f;
 	m_context.clear();
 	m_context.update();
-    //sf::RenderWindow* p_window = m_context.getContext();
 //===================================================================================
 	
 
@@ -28,13 +27,13 @@ void Application::RunLoop()
 
     while(m_context.isOpen() && !m_states.empty())
     {
-		dt = timer.restart();
+		//dt = timer.restart();
         ///Main Loop, do cycle of Input, Update, Draw, Render & Swap Buffers, Handle Events
         ///Input
 		currentState().input();
 		
         /// Update
-        currentState().update(dt.asSeconds());
+        currentState().update(0.0001f);
 		currentState().lateUpdate(&m_camera);
 		m_camera.update();
 
@@ -49,14 +48,14 @@ void Application::RunLoop()
         m_context.update();
 
         /// Handle Window Events
-		t += timer.getElapsedTime().asSeconds();
+		/*t += timer.getElapsedTime().asSeconds();
 		frames++;
 		if (t >= 1)
 		{
 			std::cout << frames << " per sec\n";
 			t = 0;
 			frames = 0;
-		}
+		}*/
 		handleEvents();
     }
 }
@@ -73,7 +72,7 @@ Basestate& Application::currentState()
 
 void Application::handleEvents()
 {
-    sf::Event e;
+    /*sf::Event e;
 	sf::View v;
 
     while(m_context.getContext()->pollEvent(e))
@@ -105,6 +104,6 @@ void Application::handleEvents()
 			default:
 				break;
 		}
-    }
+    }*/
 
 }

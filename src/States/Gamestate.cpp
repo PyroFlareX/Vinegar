@@ -1,4 +1,4 @@
-#include "../../include/States/Gamestate.h"
+#include "Gamestate.h"
 
 
 
@@ -17,14 +17,14 @@ bool GameState::input()
 {
 	//if (!isPaused)
 	//{
-		vInput = Input::getInput();
+		//vInput = Input::getInput();
 
-		m_player.getInput(vInput);
+		//m_player.getInput(vInput);
 
 		
-		if (vInput.pause)
+		//if (vInput.pause)
 		{
-			tryPause();
+			//tryPause();
 		}
 	//}
 	return false;
@@ -68,7 +68,7 @@ void GameState::render(Renderer* renderer)
 	};
 	for (int i = 0; i < 10; ++i)
 	{
-		Entity entity;
+		vn::Transform entity;
 		entity.pos = cubePositions[i];
 		//entity.rot.x = i * 20.0f;
 		renderer->drawCube(entity);

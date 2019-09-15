@@ -350,3 +350,5 @@ MigrationBackup/
 
 *.dll
 ~AutoRecover.Vinegar.vcxproj
+.vscode/c_cpp_properties.json
+.vscode/launch.json

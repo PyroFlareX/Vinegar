@@ -1,7 +1,7 @@
 #include <iostream>
 
 
-#include "../include/Application.h"
+#include "Application.h"
 
 int main()
 {

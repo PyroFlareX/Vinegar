@@ -1,16 +1,16 @@
-#include "../include/Camera.h"
+#include "Camera.h"
 
 Camera::Camera()
 {
 	lerp = 2.5f;
 
-	proj = makeProjectionMatrix(80.0f, 800, 600);
+	proj = vn::makeProjectionMatrix(80.0f, vn::vec2(800, 600));
 
 	pos = glm::vec3(0.0f, 0.0f, 3.0f);
 	rot = glm::vec3(0.0f);
 }
 
-void Camera::follow(Entity& entity)
+void Camera::follow(vn::Transform& entity)
 {
 	p_entity = &entity;
 }

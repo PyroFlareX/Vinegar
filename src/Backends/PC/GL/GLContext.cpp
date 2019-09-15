@@ -1,30 +1,26 @@
-#ifdef _WIN32
+//#ifdef _PC
 
-#include "../../../../include/Backends/PC/GL/GLContext.h"
-
-#include "glad/glad/glad.h"
+#include "GLContext.h"
+#include <iostream>
 
 Context::Context()
 {
-    sf::ContextSettings settings;
-	settings.majorVersion = 4;
-	settings.minorVersion = 5;
-	settings.depthBits = 24;
-    context.create(sf::VideoMode(WIDTH, HEIGHT), "Vinegar", sf::Style::Default, settings);
-    //context.setFramerateLimit(60);
-	context.setMouseCursorGrabbed(true);
-	context.setMouseCursorVisible(false);
+	// Init GLFW
+    glfwInit();
+    // Set all the required options for GLFW
+    glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+
+    // Create a GLFWwindow object that we can use for GLFW's functions
+    context = glfwCreateWindow(WIDTH, HEIGHT, "Vinegar", 0, NULL);
+    glfwMakeContextCurrent(context);
+
+    
     initAPI();
 }
 
 Context::~Context()
 {
-    context.close();
-}
-
-sf::RenderWindow* Context::getContext()
-{
-    return &context;
+    close();
 }
 
 void Context::clear()
@@ -35,22 +31,21 @@ void Context::clear()
 
 void Context::update()
 {
-    context.display();
-}
-
-void Context::draw()
-{
-
+	glfwSwapBuffers(context);
+    glfwPollEvents();
 }
 
 void Context::close()
 {
-	context.close();
+	glfwTerminate();
 }
 
 void Context::initAPI()
 {
-	gladLoadGL();
+	if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
+    {
+        std::cout << "Failed to initialize OpenGL context" << std::endl;
+    }
 	glViewport(0, 0, WIDTH, HEIGHT);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
@@ -58,7 +53,7 @@ void Context::initAPI()
 
 bool Context::isOpen()
 {
-    return context.isOpen();
+    return !glfwWindowShouldClose(context);
 }
 
-#endif // _WIN32
+///#endif // _PC

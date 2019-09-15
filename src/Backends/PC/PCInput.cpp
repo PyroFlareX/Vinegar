@@ -1,8 +1,8 @@
-#include "../../../include/Backends/Input.h"
+#include "../Input.h"
 
 #ifdef _WIN32
 
-#include <SFML/Graphics.hpp>
+/*#include <SFML/Graphics.hpp>
 #include <iostream>
 
 Input::Inputs Input::getInput()
@@ -54,7 +54,7 @@ Input::Inputs Input::getInput()
 	
 
 	return input;
-}
+}*/
 
 #endif // WIN32
 
