@@ -20,6 +20,8 @@ class Context
         void initAPI();
         bool isOpen();
 
+		GLFWwindow* getContext();
+
         ~Context();
     protected:
 

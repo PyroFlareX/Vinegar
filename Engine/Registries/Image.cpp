@@ -1,4 +1,4 @@
-#include "Image.h"
+#include <Engine/Resources/Image.h>
 
 namespace vn
 {
@@ -20,12 +20,7 @@ namespace vn
 	void Image::create(unsigned int x, unsigned int y, const u8vec4& color)
 	{
 		m_size = vec2(x, y);
-		std::vector<u8vec4>newImage(x * y);
-		for (auto& col : newImage)
-		{
-			col = color;
-		}
-		m_pixels.swap(newImage);
+		//std::vector<u8vec4>newImage()
 	}
 
 	void Image::create(unsigned int x, unsigned int y, const u8vec4* pixels)

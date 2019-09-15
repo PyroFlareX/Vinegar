@@ -42,6 +42,7 @@ namespace vn
 
 		unsigned int ID = 0;
 	private:
+
 	};
 
 

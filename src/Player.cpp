@@ -43,7 +43,6 @@ void Player::getInput(Input::Inputs vInput)
 	{
 		change.x += -glm::cos(glm::radians(rot.y + 90)) * speed * vInput.LY;
 		change.z += -glm::sin(glm::radians(rot.y + 90)) * speed * vInput.LY;
-		std::cout << "test\n";
 	}
 
 	velocity += change;
@@ -66,6 +65,7 @@ void Player::update(float dt)
 	velocity = glm::vec3(0.0f);
 
 	std::cout << pos.x << " " << pos.y << " " << pos.z << "\n";
+	std::cout << rot.x << " " << rot.y << " " << rot.z << "\n";
 }
 
 Player::~Player()

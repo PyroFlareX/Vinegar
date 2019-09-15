@@ -3,7 +3,6 @@
 #include "../Model.h"
 #include "../Camera.h"
 #include "../Shaders/Shader.h"
-//#include "../Texture/Texture.h"
 #include "../../Engine/Engine.h"
 
 class CubeRenderer
@@ -19,7 +18,7 @@ private:
 	std::vector<vn::Transform> m_queue;
 	Shader m_shader;
 	Model m_cubeModel;
-	//vn::Image img;
-	//Texture tex;
+	vn::Image img;
+	vn::Texture tex;
 };
 

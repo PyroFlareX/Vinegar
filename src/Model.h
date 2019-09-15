@@ -18,7 +18,7 @@ public:
 	{
 		genVAO();
 
-		//addVBO(3, mesh.vertices.);
+		addVBO(3, mesh.vertices);
 		addVBO(2, mesh.texCoords);
 		addEBO(mesh.indicies);
 
@@ -54,9 +54,17 @@ public:
 		unsigned int VBO;
 		glGenBuffers(1, &VBO);		//Gen VBO
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * data.size(), data.data(), GL_STATIC_DRAW);	//Store Verticies
+		glBufferData(GL_ARRAY_BUFFER, sizeof(/*vn::Vertex*/ float) * data.size(), data.data(), GL_STATIC_DRAW);	//Store Verticies
+		//Shader Attributes
+		//Position
 		glVertexAttribPointer(static_cast<GLuint>(vboCount), dim, GL_FLOAT, GL_FALSE, 0, nullptr);
 		glEnableVertexAttribArray(static_cast<GLuint>(vboCount++));
+		//Normals
+		/*glVertexAttribPointer(static_cast<GLuint>(vboCount), dim, GL_FLOAT, GL_FALSE, 0, nullptr);
+		glEnableVertexAttribArray(static_cast<GLuint>(vboCount++));
+		//UV
+		glVertexAttribPointer(static_cast<GLuint>(vboCount), dim, GL_FLOAT, GL_FALSE, 0, nullptr);
+		glEnableVertexAttribArray(static_cast<GLuint>(vboCount++));*/
 
 		bufferObjects.push_back(VBO);
 	}

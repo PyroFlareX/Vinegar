@@ -24,7 +24,7 @@ void Application::RunLoop()
 //===================================================================================
 
 	//Main Loop
-
+	Input::window = m_context.getContext();
     while(m_context.isOpen() && !m_states.empty())
     {
 		//dt = timer.restart();
@@ -33,7 +33,7 @@ void Application::RunLoop()
 		currentState().input();
 		
         /// Update
-        currentState().update(0.0001f);
+        currentState().update(0.001f);
 		currentState().lateUpdate(&m_camera);
 		m_camera.update();
 
@@ -58,6 +58,7 @@ void Application::RunLoop()
 		}*/
 		handleEvents();
     }
+	m_context.close();
 }
 
 void Application::popState()
