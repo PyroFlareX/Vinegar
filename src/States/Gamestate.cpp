@@ -17,9 +17,9 @@ bool GameState::input()
 {
 	//if (!isPaused)
 	//{
-		//vInput = Input::getInput();
+		vInput = Input::getInput();
 
-		//m_player.getInput(vInput);
+		m_player.getInput(vInput);
 
 		
 		//if (vInput.pause)

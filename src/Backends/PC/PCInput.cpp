@@ -2,59 +2,67 @@
 
 #ifdef _WIN32
 
-/*#include <SFML/Graphics.hpp>
+#include <GLFW/glfw3.h>
 #include <iostream>
 
-Input::Inputs Input::getInput()
+namespace Input
 {
-	static auto lastMousePosition = sf::Mouse::getPosition();
+	GLFWwindow* window;
 
-	Input::Inputs input = { false, false, 0, 0, 0, 0, false, false };
+	Inputs Input::getInput()
+	{
+		double x = 0, y = 0;
+		Input::Inputs input = { false, false, 0, 0, 0, 0, false, false };
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-		input.LY++;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		input.LY--;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-		input.LX--;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-		input.LX++;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		input.up = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-	{
-		input.down = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-	{
-		input.pause = true;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
-	{
-		input.accel = true;
-	}
+		static bool enableCursor = false;
+		enableCursor = false;
 
-	auto offset = sf::Mouse::getPosition() - lastMousePosition;
-	sf::Mouse::setPosition(lastMousePosition);
-	lastMousePosition = sf::Mouse::getPosition();
+		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-	input.RY += offset.y;// *0.05f;
-	input.RX += offset.x;// * 0.05f;
+		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		{
+			input.LY++;
+		}
+		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		{
+			input.LY--;
+		}
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		{
+			input.LX--;
+		}
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		{
+			input.LX++;
+		}
+		if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+		{
+			input.up = true;
+		}
+		if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+		{
+			input.down = true;
+		}
+		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		{
+			input.pause = true;
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+			enableCursor = !enableCursor;
+		}
+		if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+		{
+			input.accel = true;
+		}
 
-	
-
-	return input;
-}*/
+		if (!enableCursor)
+		{
+			glfwGetCursorPos(window, &x, &y);
+			glfwSetCursorPos(window, 0, 0);
+			input.RY += y;
+			input.RX += x;
+		}
+		return input;
+	}
+}
 
 #endif // WIN32
-

@@ -1,6 +1,8 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include "../../Engine/glad/glad/glad.h"
+#include <GLFW/glfw3.h>
 
 namespace Input
 {
@@ -17,6 +19,8 @@ namespace Input
 	};
 
 	Inputs getInput();
+
+	extern GLFWwindow* window;
 };
 
 #endif // INPUT_H

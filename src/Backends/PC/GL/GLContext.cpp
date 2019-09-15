@@ -14,13 +14,14 @@ Context::Context()
     context = glfwCreateWindow(WIDTH, HEIGHT, "Vinegar", 0, NULL);
     glfwMakeContextCurrent(context);
 
-    
+	glfwSetInputMode(context, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     initAPI();
 }
 
 Context::~Context()
 {
-    close();
+    //close();
 }
 
 void Context::clear()
@@ -37,6 +38,7 @@ void Context::update()
 
 void Context::close()
 {
+	glfwDestroyWindow(context);
 	glfwTerminate();
 }
 
@@ -51,9 +53,14 @@ void Context::initAPI()
 	glEnable(GL_CULL_FACE);
 }
 
+GLFWwindow * Context::getContext()
+{
+	return context;
+}
+
 bool Context::isOpen()
 {
     return !glfwWindowShouldClose(context);
 }
 
-///#endif // _PC
+//#endif // _PC
