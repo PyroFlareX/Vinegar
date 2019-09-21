@@ -16,6 +16,10 @@ namespace vn
 	typedef glm::u8vec3	u8vec3;
 	typedef glm::u8vec4	u8vec4;
 	
+	typedef glm::ivec2	vec2i;
+	typedef glm::ivec3	vec3i;
+	typedef glm::ivec4	vec4i;
+	
 	typedef glm::mat4	mat4;
 
 	class Transform

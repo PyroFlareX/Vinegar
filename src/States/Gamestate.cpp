@@ -70,7 +70,7 @@ void GameState::render(Renderer* renderer)
 	{
 		vn::Transform entity;
 		entity.pos = cubePositions[i];
-		//entity.rot.x = i * 20.0f;
+		//entity.rotate(entity, vn::vec3(15, 15, 15));
 		renderer->drawCube(entity);
 	}
 

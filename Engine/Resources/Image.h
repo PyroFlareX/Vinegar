@@ -33,7 +33,7 @@ namespace vn
 		void flipHorizontally();
 
 	private:
-		vec2 m_size;
+		vec2i m_size;
 		std::vector<u8vec4> m_pixels;
 
 		const int toIndex(const unsigned int x, const unsigned int y) const;

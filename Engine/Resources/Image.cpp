@@ -1,4 +1,5 @@
 #include "Image.h"
+#include "stb_image.h"
 
 namespace vn
 {
@@ -38,7 +39,8 @@ namespace vn
 
 	bool Image::loadFromFile(const std::string& filename)
 	{
-		//	@TODO	Use stb_image
+
+		//stbi_load(filename.c_str(), &m_size.x, &m_size.y, , 0);
 		return false;
 	}
 

@@ -3,7 +3,7 @@
 #include <vector>
 #include "../Types/Types.h"
 
-//	@TODO Finish this and implement model loading (preferably with Assimp)
+
 namespace vn
 {
 	struct Vertex
@@ -15,9 +15,8 @@ namespace vn
 
 	struct Mesh
 	{
-		std::vector<float> vertices;
+		std::vector<vn::Vertex> vertices;
 		std::vector<unsigned int> indicies;
-		std::vector<float> texCoords;
 	};
 
 	struct renderInfo
