@@ -51,8 +51,9 @@ namespace vn
 		matrix = glm::rotate(matrix, glm::radians(entity.rot.y), entity.pos/*{ 0, 1, 0 }*/);
 		matrix = glm::rotate(matrix, glm::radians(entity.rot.z), entity.pos/*{ 0, 0, 1 }*/);
 
-
 		matrix = glm::translate(matrix, entity.pos);
+
+		matrix = glm::scale(matrix, entity.scale);
 
 		return matrix;
 	}

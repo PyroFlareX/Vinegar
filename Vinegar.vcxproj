@@ -23,6 +23,7 @@
     <ClCompile Include="Engine\Resources\Image.cpp" />
     <ClCompile Include="Engine\Resources\stb_image.cpp" />
     <ClCompile Include="Engine\Types\Types.cpp" />
+    <ClCompile Include="Engine\Util\Loaders.cpp" />
     <ClCompile Include="Engine\Util\UtilFunctions.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Backends\NX\GL\NXContext.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="src\Renderers\ChunkRenderer.cpp" />
     <ClCompile Include="src\Renderers\ComputeRenderer.cpp" />
     <ClCompile Include="src\Renderers\CubeRenderer.cpp" />
+    <ClCompile Include="src\Renderers\GeneralRenderer.cpp" />
     <ClCompile Include="src\Renderers\Renderer.cpp" />
     <ClCompile Include="src\States\Gamestate.cpp" />
   </ItemGroup>
@@ -60,6 +62,7 @@
     <ClInclude Include="src\Renderers\ChunkRenderer.h" />
     <ClInclude Include="src\Renderers\ComputeRenderer.h" />
     <ClInclude Include="src\Renderers\CubeRenderer.h" />
+    <ClInclude Include="src\Renderers\GeneralRenderer.h" />
     <ClInclude Include="src\Renderers\Renderer.h" />
     <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\States\Basestate.h" />

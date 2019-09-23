@@ -21,26 +21,38 @@ namespace vn
 	void Image::create(unsigned int x, unsigned int y, const u8vec4& color)
 	{
 		m_size = vec2(x, y);
-		std::vector<u8vec4>newImage(x * y);
-		for (auto& col : newImage)
+		std::vector<unsigned char> newImage(x * y * 4);
+
+		unsigned char* ptr = &newImage[0];
+		unsigned char* end = ptr + newImage.size();
+		while (ptr < end)
 		{
-			col = color;
+			*ptr++ = color.r;
+			*ptr++ = color.g;
+			*ptr++ = color.b;
+			*ptr++ = color.a;
 		}
 		m_pixels.swap(newImage);
 	}
 
-	void Image::create(unsigned int x, unsigned int y, const u8vec4* pixels)
+	void Image::create(unsigned int x, unsigned int y, const uint8_t* pixels)
 	{
 		m_size = vec2(x, y);
 
-		std::vector<u8vec4> newPixels(pixels, pixels + x * y);
+		std::vector<unsigned char> newPixels(pixels, pixels + x * y * 4);
 		m_pixels.swap(newPixels);
 	}
 
 	bool Image::loadFromFile(const std::string& filename)
 	{
+		int width, height, channels;
+		unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
 
-		//stbi_load(filename.c_str(), &m_size.x, &m_size.y, , 0);
+		m_pixels.resize(width * height * 4);
+		memcpy(&m_pixels[0], data, m_pixels.size());
+
+		stbi_image_free(data);
+
 		return false;
 	}
 
@@ -61,24 +73,29 @@ namespace vn
 		return m_size;
 	}
 
-	const u8vec4* Image::getPixelsPtr() const
+	const unsigned char* Image::getPixelsPtr() const
 	{
 		return m_pixels.data();
 	}
 
 	void Image::setPixel(unsigned int x, unsigned int y, const u8vec4& color)
 	{
-		m_pixels[toIndex(x, y)] = color;
+		unsigned char* pixel = &m_pixels[toIndex(x, y) * 4];
+		*pixel++ = color.r;
+		*pixel++ = color.g;
+		*pixel++ = color.b;
+		*pixel++ = color.a;
 	}
 
 	u8vec4 Image::getPixel(unsigned int x, unsigned int y) const
 	{
-		return m_pixels.at(toIndex(x, y));
+		const unsigned char* pixel = &m_pixels[toIndex(x, y) * 4];
+		return u8vec4(pixel[0], pixel[1], pixel[2], pixel[3]);
 	}
 
 	void Image::flipVertically()
 	{
-
+		
 	}
 
 	void Image::flipHorizontally()

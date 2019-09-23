@@ -14,7 +14,6 @@ CubeRenderer::CubeRenderer()
 
 	tex.loadFromImage(img);
 
-	//tex.bind();
 
 	std::vector<float> vertexCoords
 	{
@@ -113,7 +112,7 @@ CubeRenderer::CubeRenderer()
 
 
 
-	m_cubeModel.addData({ vertexCoords, indices, texCoords});
+	//m_cubeModel.addData({ vertexCoords, indices, texCoords});
 }
 
 void CubeRenderer::addCube(vn::Transform& entity)
@@ -123,20 +122,20 @@ void CubeRenderer::addCube(vn::Transform& entity)
 
 void CubeRenderer::render(Camera& cam)
 {
-	m_shader.use();
-	m_cubeModel.bindVAO();
+	//m_shader.use();
+	//m_cubeModel.bindVAO();
 	tex.bind();
 
-	m_shader.setMat4("view", cam.getViewMatrix(cam));
-	m_shader.setMat4("proj", cam.getProjMatrix());
+	//m_shader.setMat4("view", cam.getViewMatrix(cam));
+	//m_shader.setMat4("proj", cam.getProjMatrix());
 
 	glEnable(GL_CULL_FACE);
 
 	for (auto& entity : m_queue)
 	{
-		m_shader.setMat4("model", makeModelMatrix(entity));
+		//m_shader.setMat4("model", makeModelMatrix(entity));
 
-		glDrawElements(GL_TRIANGLES, m_cubeModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
+		//glDrawElements(GL_TRIANGLES, m_cubeModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
 	m_queue.clear();
 }
