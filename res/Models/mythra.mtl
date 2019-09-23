@@ -1,0 +1,158 @@
+# Blender MTL File: 'None'
+# Material Count: 13
+
+newmtl Material_#25
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_FACE.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_FACE.png
+
+newmtl Material_#26
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_EYE.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_EYE.png
+
+newmtl Material_#28
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\DEKO_AZA_A.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\DEKO_AZA_A.png
+
+newmtl Material_#31
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_HAIR_COL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_HAIR_COL.png
+
+newmtl Material_#33
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_HAIRACCE_COL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_HAIRACCE_COL.png
+
+newmtl Material_#36
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\DEKO_AZA_A.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\DEKO_AZA_A.png
+
+newmtl Material_#40
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_HAIR_COL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_HAIR_COL.png
+
+newmtl Material_#41
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_BODY_COL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_BODY_COL.png
+
+newmtl Material_#42
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_BODY_COL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_BODY_COL.png
+
+newmtl Material_#46
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\CRISTAL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\CRISTAL.png
+
+newmtl Material_#49
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_FACE.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_FACE.png
+
+newmtl Material_#51
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_WING_COL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\BL000201_WING_COL.png
+
+newmtl Material_#53
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\CRISTAL.png
+map_d C:\\Users\\Pyros\\Documents\\Models\\mythra\\source\\CRISTAL.png

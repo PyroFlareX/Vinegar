@@ -79,14 +79,17 @@ public:
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vn::Vertex) * data.size(), data.data(), GL_STATIC_DRAW);	//Store Verticies
 		//Shader Attributes
 		//Position
+		glEnableVertexAttribArray(static_cast<GLuint>(vboCount));
 		glVertexAttribPointer(static_cast<GLuint>(vboCount), 3, GL_FLOAT, GL_FALSE, sizeof(vn::Vertex), nullptr);
-		glEnableVertexAttribArray(static_cast<GLuint>(vboCount++));
+		
 		//Normals
+		glEnableVertexAttribArray(static_cast<GLuint>(++vboCount));
 		glVertexAttribPointer(static_cast<GLuint>(vboCount), 3, GL_FLOAT, GL_FALSE, sizeof(vn::Vertex), (void*)(3 * sizeof(float)));
-		glEnableVertexAttribArray(static_cast<GLuint>(vboCount++));
+		
 		//UV
+		glEnableVertexAttribArray(static_cast<GLuint>(++vboCount));
 		glVertexAttribPointer(static_cast<GLuint>(vboCount), 2, GL_FLOAT, GL_FALSE, sizeof(vn::Vertex), (void*)(6 * sizeof(float)));
-		glEnableVertexAttribArray(static_cast<GLuint>(vboCount++));
+		
 
 		bufferObjects.push_back(VBO);
 	}

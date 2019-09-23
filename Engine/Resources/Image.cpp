@@ -48,6 +48,7 @@ namespace vn
 		int width, height, channels;
 		unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
 
+		m_size = vec2(width, height);
 		m_pixels.resize(width * height * 4);
 		memcpy(&m_pixels[0], data, m_pixels.size());
 
