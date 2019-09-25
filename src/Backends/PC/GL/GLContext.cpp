@@ -53,7 +53,7 @@ void Context::initAPI()
 	glEnable(GL_CULL_FACE);
 }
 
-GLFWwindow * Context::getContext()
+GLFWwindow* Context::getContext()
 {
 	return context;
 }
