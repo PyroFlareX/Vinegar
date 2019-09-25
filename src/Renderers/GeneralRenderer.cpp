@@ -6,7 +6,7 @@ GeneralRenderer::GeneralRenderer()
 {
 	
 	img.create(16, 16, vn::u8vec4(255.0f, 0.0f, 0.0f, 255.0f));
-	//img.loadFromFile("res/container.jpg");
+	img.loadFromFile("res/container.jpg");
 	//img = resources::TexManager.getSheet();
 	//img.saveToFile("test.png");
 
@@ -37,12 +37,13 @@ void GeneralRenderer::render(Camera& cam)
 	m_shader.setMat4("proj", cam.getProjMatrix());
 
 	glDisable(GL_CULL_FACE);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
 	for (auto& entity : m_queue)
 	{
 		m_shader.setMat4("model", makeModelMatrix(entity));
-
+		
+		glDrawArrays(GL_TRIANGLES, 0, m_generalModel.getNumIndicies());
 		glDrawElements(GL_TRIANGLES, m_generalModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
 	m_queue.clear();
