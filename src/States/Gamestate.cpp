@@ -68,13 +68,16 @@ void GameState::render(Renderer* renderer)
 	};
 	for (int i = 0; i < 10; ++i)
 	{*/
+	static int x = 0;
+
 		vn::Transform entity;
 		entity.pos = vn::vec3(1.0f, 0.0f, 1.0f);
 		//entity.pos = cubePositions[i];
 		entity.rescale(entity, vn::vec3(0.5f, 0.5f, 0.5f));
+		entity.rotate(entity, vn::vec3(0, 0, 360 * sin(x++ / 1000.0)));
 		renderer->drawObject(entity);
 	//}
-
+		
 
 	//m_world.renderWorld(app.getCam(), *renderer);
 }

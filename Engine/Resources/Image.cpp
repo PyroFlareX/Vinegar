@@ -51,19 +51,55 @@ namespace vn
 		m_size = vec2(width, height);
 		m_pixels.resize(width * height * 4);
 
+#ifdef NO_C_HEAP
 		for (auto i = 0; i < width * height * 4; ++i)
 		{
 			m_pixels[i] = data[i];
 		}
 		stbi_image_free(data);
+#else
+		m_pixels.resize(width * height * 4);
+		memcpy(&m_pixels[0], data, m_pixels.size());
+#endif // NO_C_HEAP
+
 
 		return false;
 	}
 
 	bool Image::loadFromMemory(const void* data, std::size_t size)
 	{
-		//	@TODO	Use stb_image
-		return false;
+		// Load the image and get a pointer to the pixels in memory
+		int width = 0;
+		int height = 0;
+		int channels = 0;
+		const unsigned char* buffer = static_cast<const unsigned char*>(data);
+		unsigned char* ptr = stbi_load_from_memory(buffer, static_cast<int>(size), &width, &height, &channels, STBI_rgb_alpha);
+
+		if (ptr)
+		{
+			// Assign the image properties
+			m_size.x = width;
+			m_size.y = height;
+
+			if (width && height)
+			{
+				// Copy the loaded pixels to the pixel buffer
+				m_pixels.resize(width * height * 4);
+				memcpy(&m_pixels[0], ptr, m_pixels.size());
+			}
+
+			// Free the loaded pixels (they are now in our own pixel buffer)
+			stbi_image_free(ptr);
+
+			return true;
+		}
+		else
+		{
+			// Error, failed to load the image
+			//std::cerr << "Failed to load image from memory. Reason: " << stbi_failure_reason() << std::endl;
+
+			return false;
+		}
 	}
 
 	bool Image::saveToFile(const std::string& filename)
