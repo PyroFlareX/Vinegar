@@ -43,7 +43,7 @@ void GeneralRenderer::render(Camera& cam)
 	{
 		m_shader.setMat4("model", makeModelMatrix(entity));
 		
-		glDrawArrays(GL_TRIANGLES, 0, m_generalModel.getNumIndicies());
+		//glDrawArrays(GL_TRIANGLES, 0, m_generalModel.getNumIndicies());
 		glDrawElements(GL_TRIANGLES, m_generalModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
 	m_queue.clear();

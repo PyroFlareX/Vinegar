@@ -46,12 +46,15 @@ namespace vn
 	bool Image::loadFromFile(const std::string& filename)
 	{
 		int width, height, channels;
-		unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
-
+		unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, STBI_rgb_alpha);
+		//Channels should be 4, R G B and A. If three channels, then :P probably a seg fault
 		m_size = vec2(width, height);
 		m_pixels.resize(width * height * 4);
-		memcpy(&m_pixels[0], data, m_pixels.size());
 
+		for (auto i = 0; i < width * height * 4; ++i)
+		{
+			m_pixels[i] = data[i];
+		}
 		stbi_image_free(data);
 
 		return false;
