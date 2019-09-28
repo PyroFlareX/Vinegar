@@ -21,6 +21,7 @@ namespace vn
 	typedef glm::ivec4	vec4i;
 	
 	typedef glm::mat4	mat4;
+	typedef glm::mat3	mat3;
 
 	class Transform
 	{

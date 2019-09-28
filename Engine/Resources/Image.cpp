@@ -1,5 +1,6 @@
 #include "Image.h"
 #include "stb_image.h"
+#include "stb_image_write.h"
 
 namespace vn
 {
@@ -105,7 +106,14 @@ namespace vn
 	bool Image::saveToFile(const std::string& filename)
 	{
 		//	@TODO	Use stb_image to save image
+		/*if(stbi_write_png(filename.c_str(), m_size.x, m_size.y, , m_pixels.data(), 4 * sizeof(unsigned char)))
+		{
+			return true;
+		}
+		else*/
+		{
 		return false;
+		}
 	}
 
 	vec2 Image::getSize() const

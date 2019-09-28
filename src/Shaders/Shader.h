@@ -89,10 +89,23 @@ public:
 	{
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
+	void setVec3(const std::string &name, vn::vec3 value) const
+	{
+		glUniform3f(glGetUniformLocation(ID, name.c_str()), value.x, value.y, value.z);
+	}
+	void setVec4(const std::string &name, vn::vec4 value) const
+	{
+		glUniform4f(glGetUniformLocation(ID, name.c_str()), value.x, value.y, value.z, value.w);
+	}
+	void setMat3(const std::string& name, vn::mat3 value)
+	{
+		glUniformMatrix3fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+	}
 	void setMat4(const std::string& name, vn::mat4 value)
 	{
 		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
 	}
+
 
 	//Shader Program:
 	unsigned int ID;

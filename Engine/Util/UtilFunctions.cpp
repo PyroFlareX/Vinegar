@@ -57,4 +57,8 @@ namespace vn
 
 		return matrix;
 	}
+	const mat3 makeNormalMatrix(const Transform& entity)
+	{
+		return mat3(glm::transpose(glm::inverse(makeModelMatrix(entity))));
+	}
 }

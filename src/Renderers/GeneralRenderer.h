@@ -18,6 +18,8 @@ private:
 	std::vector<vn::Transform> m_queue;
 	Shader m_shader;
 	Model m_generalModel;
+	Shader m_lampshader;
+	Model m_lampModel;
 	vn::Image img;
 	vn::Texture tex;
 };

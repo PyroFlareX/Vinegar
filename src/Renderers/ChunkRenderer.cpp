@@ -4,7 +4,7 @@
 ChunkRenderer::ChunkRenderer()
 {
 	//tex.loadFromImage(resources::TexManager.getSheet());
-	m_shader.load("res/Shaders/ChunkVert.glsl", "res/Shaders/ChunkFrag.glsl");
+	//m_shader.load("res/Shaders/ChunkVert.glsl", "res/Shaders/ChunkFrag.glsl");
 }
 
 /*void ChunkRenderer::addChunk(ChunkMesh& mesh)

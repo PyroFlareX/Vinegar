@@ -72,12 +72,12 @@ namespace vn
 						attributes.vertices[3 * idx.vertex_index + 2] 
 						};
 
-						/*vert.normal = vec3
+						vert.normal = vec3
 						{
 						attributes.normals[3 * idx.normal_index + 0],
 						attributes.normals[3 * idx.normal_index + 1],
 						attributes.normals[3 * idx.normal_index + 2]
-						};*/
+						};
 
 						vert.uv = vec2
 						{
@@ -87,6 +87,7 @@ namespace vn
 
 						objMesh.vertices.push_back(vert);
 						objMesh.indicies.push_back(objMesh.indicies.size());
+
 						// Optional: vertex colors
 						// tinyobj::real_t red = attrib.colors[3*idx.vertex_index+0];
 						// tinyobj::real_t green = attrib.colors[3*idx.vertex_index+1];

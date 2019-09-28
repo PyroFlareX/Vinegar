@@ -21,6 +21,7 @@ namespace vn
 		std::stringstream stream;
 
 		stream << inFile.rdbuf();
+		inFile.close();
 		return stream.str();
 	}
 

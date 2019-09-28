@@ -47,6 +47,7 @@
     <ClInclude Include="Engine\Resources\Image.h" />
     <ClInclude Include="Engine\Resources\Mesh.h" />
     <ClInclude Include="Engine\Resources\stb_image.h" />
+    <ClInclude Include="Engine\Resources\stb_image_write.h" />
     <ClInclude Include="Engine\Resources\Texture.h" />
     <ClInclude Include="Engine\Types\Types.h" />
     <ClInclude Include="Engine\Util\Loaders.h" />
@@ -199,18 +200,22 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\Programming\Libraries\glfw-3.3.bin\include;E:\Programming\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Pyros\Desktop\Programming\Libraries\glfw-33\include;C:\Users\Pyros\Desktop\Programming\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Programming\Libraries\glfw-3.3.bin\lib-vc2017;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Pyros\Desktop\Programming\Libraries\glfw-33\lib-vc2017;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>msvcmrt.lib;msvcrt.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

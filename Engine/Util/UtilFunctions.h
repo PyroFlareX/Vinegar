@@ -12,4 +12,5 @@ namespace vn
 	const mat4 makeProjectionMatrix(const float fov, const vec2 contextSize);
 	const mat4 makeViewMatrix(const Transform& camera);
 	const mat4 makeModelMatrix(const Transform& entity);
+	const mat3 makeNormalMatrix(const Transform& entity);
 }
