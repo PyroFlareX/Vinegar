@@ -7,7 +7,7 @@ GeneralRenderer::GeneralRenderer()
 	
 	//img.create(16, 16, vn::u8vec4(255.0f, 0.0f, 0.0f, 255.0f));
 	//img.loadFromFile("res/container.jpg");
-	img.loadFromFile("res/Textures/fbi.png");
+	img.loadFromFile("res/container.jpg");
 	//img = resources::TexManager.getSheet();
 	//img.saveToFile("test.png");
 

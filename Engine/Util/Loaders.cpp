@@ -72,18 +72,32 @@ namespace vn
 						attributes.vertices[3 * idx.vertex_index + 2] 
 						};
 
-						vert.normal = vec3
+						if (!attributes.texcoords.empty())
 						{
-						attributes.normals[3 * idx.normal_index + 0],
-						attributes.normals[3 * idx.normal_index + 1],
-						attributes.normals[3 * idx.normal_index + 2]
-						};
+							vert.normal = vec3
+							{
+							attributes.normals[3 * idx.normal_index + 0],
+							attributes.normals[3 * idx.normal_index + 1],
+							attributes.normals[3 * idx.normal_index + 2]
+							};
+						}
+						else
+						{
+							vert.normal = vec3(0.0f);
+						}
 
-						vert.uv = vec2
+						if (!attributes.texcoords.empty())
 						{
-						attributes.texcoords[2 * idx.texcoord_index + 0],
-						attributes.texcoords[2 * idx.texcoord_index + 1]
-						};
+							vert.uv = vec2
+							{
+							attributes.texcoords[2 * idx.texcoord_index + 0],
+							attributes.texcoords[2 * idx.texcoord_index + 1]
+							};
+						}
+						else
+						{
+							vert.uv = vec2(0.0f);
+						}
 
 						objMesh.vertices.push_back(vert);
 						objMesh.indicies.push_back(objMesh.indicies.size());
