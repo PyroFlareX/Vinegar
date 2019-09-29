@@ -5,6 +5,7 @@
 #include "Resources/Mesh.h"
 #include "Util/Loaders.h"
 #include "Resources/Texture.h"
+#include "Resources/Timer.h"
 
 namespace vn
 {

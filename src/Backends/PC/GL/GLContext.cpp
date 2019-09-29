@@ -15,6 +15,7 @@ Context::Context()
     glfwMakeContextCurrent(context);
 
 	glfwSetInputMode(context, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSwapInterval(0);
 
     initAPI();
 }

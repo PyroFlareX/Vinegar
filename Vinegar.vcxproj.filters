@@ -158,5 +158,8 @@
     <ClInclude Include="Engine\Resources\stb_image_write.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Resources\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

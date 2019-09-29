@@ -10,9 +10,9 @@ Application::Application()
 
 void Application::RunLoop()
 {
-	//sf::Clock timer;
-	//sf::Time dt;
+	vn::Clock clock;
 	float t = 0;
+	float dt = 0;
 	float frames = 0.0f;
 	m_context.clear();
 	m_context.update();
@@ -27,13 +27,13 @@ void Application::RunLoop()
 	Input::window = m_context.getContext();
     while(m_context.isOpen() && !m_states.empty())
     {
-		//dt = timer.restart();
+		dt = clock.restart();
         ///Main Loop, do cycle of Input, Update, Draw, Render & Swap Buffers, Handle Events
         ///Input
 		currentState().input();
 		
         /// Update
-        currentState().update(0.001f);
+        currentState().update(dt);
 		currentState().lateUpdate(&m_camera);
 		m_camera.update();
 
@@ -48,14 +48,14 @@ void Application::RunLoop()
         m_context.update();
 
         /// Handle Window Events
-		/*t += timer.getElapsedTime().asSeconds();
+		t += dt;
 		frames++;
 		if (t >= 1)
 		{
 			std::cout << frames << " per sec\n";
 			t = 0;
 			frames = 0;
-		}*/
+		}
 		handleEvents();
     }
 	m_context.close();
