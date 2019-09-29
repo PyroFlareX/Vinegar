@@ -54,7 +54,8 @@ void GameState::lateUpdate(Camera* cam)
 
 void GameState::render(Renderer* renderer)
 {
-	/*glm::vec3 cubePositions[] = {
+	static int x = 0;
+	glm::vec3 cubePositions[] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
 		glm::vec3(2.0f,  5.0f, -15.0f),
 		glm::vec3(-2.0f, -2.0f, -3.0f),
@@ -67,16 +68,14 @@ void GameState::render(Renderer* renderer)
 		glm::vec3(-1.0f,  1.0f, -2.0f)
 	};
 	for (int i = 0; i < 10; ++i)
-	{*/
-	static int x = 0;
-
+	{
 		vn::Transform entity;
 		entity.pos = vn::vec3(1.0f, 0.0f, 1.0f);
-		//entity.pos = cubePositions[i];
+		entity.pos = cubePositions[i];
 		//entity.rescale(entity, vn::vec3(0.15f, 0.15f, 0.15f));
-		entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 1000.0), 0));
+		entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 100000.0), 0));
 		renderer->drawObject(entity);
-	//}
+	}
 		
 
 	//m_world.renderWorld(app.getCam(), *renderer);

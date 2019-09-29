@@ -44,6 +44,7 @@
     <ClInclude Include="Engine\Engine.h" />
     <ClInclude Include="Engine\glad\glad\glad.h" />
     <ClInclude Include="Engine\glad\KHR\khrplatform.h" />
+    <ClInclude Include="Engine\Resources\Framebuffer.h" />
     <ClInclude Include="Engine\Resources\Image.h" />
     <ClInclude Include="Engine\Resources\Mesh.h" />
     <ClInclude Include="Engine\Resources\stb_image.h" />
