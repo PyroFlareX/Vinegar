@@ -13,6 +13,8 @@ public:
 	void addCube(vn::Transform& entity);
 	void render(Camera& cam);
 
+	void clearQueue();
+
 	~CubeRenderer();
 private:
 	std::vector<vn::Transform> m_queue;

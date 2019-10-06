@@ -8,7 +8,7 @@ class Camera : public vn::Transform
 public:
 	Camera();
 
-	vn::mat4 getViewMatrix(const Camera cam) const { return makeViewMatrix(*this); }
+	vn::mat4 getViewMatrix() const { return vn::makeViewMatrix(*this); }
 	glm::mat4 getProjMatrix() const { return proj; }
 
 	void follow(vn::Transform& entity);

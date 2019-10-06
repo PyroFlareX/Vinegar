@@ -10,7 +10,7 @@ CubeRenderer::CubeRenderer()
 	//img = resources::TexManager.getSheet();
 	//img.saveToFile("test.png");
 
-	m_shader.load("res/Shaders/vert.glsl", "res/Shaders/frag.glsl");
+	m_shader.load("res/Shaders/Other/vert.glsl", "res/Shaders/Other/frag.glsl");
 
 	tex.loadFromImage(img);
 
@@ -137,6 +137,10 @@ void CubeRenderer::render(Camera& cam)
 
 		//glDrawElements(GL_TRIANGLES, m_cubeModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
+}
+
+void CubeRenderer::clearQueue()
+{
 	m_queue.clear();
 }
 

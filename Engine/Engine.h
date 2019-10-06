@@ -6,6 +6,7 @@
 #include "Util/Loaders.h"
 #include "Resources/Texture.h"
 #include "Resources/Timer.h"
+#include "Resources/Framebuffer.h"
 
 namespace vn
 {

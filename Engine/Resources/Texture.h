@@ -11,7 +11,6 @@ namespace vn
 		Texture()
 		{
 			glGenTextures(1, &ID);
-			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, ID);
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
@@ -28,7 +27,6 @@ namespace vn
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 1);
 		}
-
 
 		const void bind()
 		{

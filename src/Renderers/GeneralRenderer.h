@@ -13,6 +13,8 @@ public:
 	void addInstance(vn::Transform& entity);
 	void render(Camera& cam);
 
+	void clearQueue();
+
 	~GeneralRenderer();
 private:
 	std::vector<vn::Transform> m_queue;

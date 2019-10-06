@@ -4,15 +4,11 @@
 
 GeneralRenderer::GeneralRenderer()
 {
-	
-	//img.create(16, 16, vn::u8vec4(255.0f, 0.0f, 0.0f, 255.0f));
-	//img.loadFromFile("res/container.jpg");
 	img.loadFromFile("res/container.jpg");
 	//img = resources::TexManager.getSheet();
-	//img.saveToFile("test.png");
 
 	m_shader.load("res/Shaders/model.vs", "res/Shaders/model.fs");
-	m_lampshader.load("res/Shaders/testing.vs", "res/Shaders/testing.fs");
+	m_lampshader.load("res/Shaders/lamp.vs", "res/Shaders/lamp.fs");
 
 	tex.loadFromImage(img);
 	
@@ -38,7 +34,7 @@ void GeneralRenderer::render(Camera& cam)
 	m_generalModel.bindVAO();
 	tex.bind();
 
-	m_shader.setMat4("view", cam.getViewMatrix(cam));
+	m_shader.setMat4("view", cam.getViewMatrix());
 	m_shader.setMat4("proj", cam.getProjMatrix());
 	m_shader.setVec3("lightsrc", lightpos);
 
@@ -52,17 +48,21 @@ void GeneralRenderer::render(Camera& cam)
 		
 		glDrawElements(GL_TRIANGLES, m_generalModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
-	m_queue.clear();
 
 	vn::Transform trans;
 	trans.rescale(trans, vn::vec3(0.5f, 0.5f, 0.5f));
 	trans.translate(trans, lightpos);
 	m_lampshader.use();
 	m_lampModel.bindVAO();
-	m_lampshader.setMat4("view", cam.getViewMatrix(cam));
+	m_lampshader.setMat4("view", cam.getViewMatrix());
 	m_lampshader.setMat4("proj", cam.getProjMatrix());
 	m_lampshader.setMat4("model", makeModelMatrix(trans));
 	glDrawElements(GL_TRIANGLES, m_lampModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
+}
+
+void GeneralRenderer::clearQueue()
+{
+	m_queue.clear();
 }
 
 GeneralRenderer::~GeneralRenderer()

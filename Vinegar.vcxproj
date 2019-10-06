@@ -33,7 +33,6 @@
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\Renderers\ChunkRenderer.cpp" />
     <ClCompile Include="src\Renderers\ComputeRenderer.cpp" />
     <ClCompile Include="src\Renderers\CubeRenderer.cpp" />
     <ClCompile Include="src\Renderers\GeneralRenderer.cpp" />
@@ -62,7 +61,6 @@
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\Player.h" />
-    <ClInclude Include="src\Renderers\ChunkRenderer.h" />
     <ClInclude Include="src\Renderers\ComputeRenderer.h" />
     <ClInclude Include="src\Renderers\CubeRenderer.h" />
     <ClInclude Include="src\Renderers\GeneralRenderer.h" />
@@ -202,7 +200,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\Programming\Libraries\glfw-3.3.bin\include;E:\Programming\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Pyros\Desktop\Programming\Libraries\glfw-33\include;C:\Users\Pyros\Desktop\Programming\Libraries\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
@@ -212,7 +210,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Programming\Libraries\glfw-3.3.bin\lib-vc2017;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Pyros\Desktop\Programming\Libraries\glfw-33\lib-vc2017;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>msvcmrt.lib;msvcrt.lib;opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ProjectReference>

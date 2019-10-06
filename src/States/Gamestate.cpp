@@ -6,6 +6,7 @@ GameState::GameState(Application& app)	: /*m_world(app.getCam(), m_player),*/	Ba
 {
 	TryPause = false;
 	app.getCam().follow(m_player);
+
 }
 
 GameState::~GameState()

@@ -4,13 +4,13 @@
 
 namespace vn
 {
-	inline float	lerp(float pos1, float pos2, float gradient);
-	inline vec2	lerp(vec2 pos1, vec2 pos2, float gradient);
-	inline vec3	lerp(vec3 pos1, vec3 pos2, float gradient);
-	inline vec4	lerp(vec4 pos1, vec4 pos2, float gradient);
+	inline float	lerp(float pos1, float pos2, float gradient) noexcept;
+	inline vec2	lerp(vec2 pos1, vec2 pos2, float gradient) noexcept;
+	inline vec3	lerp(vec3 pos1, vec3 pos2, float gradient) noexcept;
+	inline vec4	lerp(vec4 pos1, vec4 pos2, float gradient) noexcept;
 
-	const mat4 makeProjectionMatrix(const float fov, const vec2 contextSize);
-	const mat4 makeViewMatrix(const Transform& camera);
-	const mat4 makeModelMatrix(const Transform& entity);
-	const mat3 makeNormalMatrix(const Transform& entity);
+	const mat4 makeProjectionMatrix(const float fov, const vec2 contextSize) noexcept;
+	const mat4 makeViewMatrix(const Transform& camera) noexcept;
+	const mat4 makeModelMatrix(const Transform& entity) noexcept;
+	const mat3 makeNormalMatrix(const Transform& entity) noexcept;
 }

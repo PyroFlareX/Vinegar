@@ -2,7 +2,7 @@
 
 ComputeRenderer::ComputeRenderer()
 {
-	m_shader.addShader("res/Shaders/compute.glsl", GL_COMPUTE_SHADER);
+	m_shader.addShader("res/Shaders/Other/compute.glsl", GL_COMPUTE_SHADER);
 }
 
 void ComputeRenderer::render()
