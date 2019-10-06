@@ -15,6 +15,7 @@ GeneralRenderer::GeneralRenderer()
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/Sword.obj"));
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/mythra.obj"));
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/cube.obj"));
+	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/teapot.obj"));
 	m_generalModel.addData(vn::loadMeshFromObj("res/Models/sphere.obj"));
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/chalet.obj"));
 
