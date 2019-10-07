@@ -31,12 +31,24 @@ void GeneralRenderer::render(Camera& cam)
 {
 	vn::vec3 lightpos(5.0f, 0.0f, -1.0f);
 
+	vr::Hmd_Eye nEye;
+	static bool left = false;
+	if (left)
+	{
+		nEye = vr::Eye_Left;
+	}
+	else
+	{
+		nEye = vr::Eye_Right;
+	}
+	left = !left;
+
 	m_shader.use();
 	m_generalModel.bindVAO();
 	tex.bind();
-
-	m_shader.setMat4("view", cam.getViewMatrix());
-	m_shader.setMat4("proj", cam.getProjMatrix());
+	//cam.getProjMatrix() cam.getViewMatrix())
+	m_shader.setMat4("view", cam.getVRview(nEye));
+	m_shader.setMat4("proj", cam.getVRproj(nEye));
 	m_shader.setVec3("lightsrc", lightpos);
 
 	glEnable(GL_CULL_FACE);
@@ -55,8 +67,8 @@ void GeneralRenderer::render(Camera& cam)
 	trans.translate(trans, lightpos);
 	m_lampshader.use();
 	m_lampModel.bindVAO();
-	m_lampshader.setMat4("view", cam.getViewMatrix());
-	m_lampshader.setMat4("proj", cam.getProjMatrix());
+	m_lampshader.setMat4("view", cam.getVRview(nEye));
+	m_lampshader.setMat4("proj", cam.getVRproj(nEye));
 	m_lampshader.setMat4("model", makeModelMatrix(trans));
 	glDrawElements(GL_TRIANGLES, m_lampModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 }

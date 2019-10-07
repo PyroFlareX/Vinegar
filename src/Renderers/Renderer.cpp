@@ -49,23 +49,26 @@ void Renderer::doCompute()
 void Renderer::render(Camera& cam)
 {
 	//Main Pass
-	
-	m_framebuffer.bind();
+	//m_framebuffer.bind();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
 	m_cubeRenderer.render(cam);
 	m_generalRenderer.render(cam);
 	m_computeRenderer.render();
-	
+}
 
+void Renderer::finish()
+{
 	//Second Pass
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	m_shader.use();
 	m_quad.bindVAO();
 	glDisable(GL_DEPTH_TEST);
-	m_framebuffer.getTexture().bind();
+	//m_framebuffer.getTexture().bind();
 	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+	clearQueue();
 }
 
 void Renderer::clearQueue()

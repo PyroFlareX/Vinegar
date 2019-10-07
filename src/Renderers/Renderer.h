@@ -17,6 +17,7 @@ class Renderer
 		void drawObject(vn::Transform& entity);
 		void doCompute();
 		void render(Camera& cam);
+		void finish();
 
 		void clearQueue();
 

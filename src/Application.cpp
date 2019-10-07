@@ -16,6 +16,13 @@ void Application::RunLoop()
 	float frames = 0.0f;
 	m_context.clear();
 	m_context.update();
+	vn::vec2i winSize;
+	m_camera.getHMDptr()->GetRecommendedRenderTargetSize(reinterpret_cast<uint32_t*>(&winSize.x), reinterpret_cast<uint32_t*>(&winSize.y));
+	vn::Framebuffer leftEye(winSize);
+	vn::Framebuffer rightEye(winSize);
+
+	vr::VRCompositor();
+	
 //===================================================================================
 	
 
@@ -42,11 +49,27 @@ void Application::RunLoop()
 
         /// Render
 		m_context.clear();
+		///If VR, then render one for each eye
+		glViewport(0, 0, winSize.x, winSize.y);
+		leftEye.bind();
 		m_renderer.render(m_camera);
-
-		m_renderer.clearQueue();
+		rightEye.bind();
+		m_renderer.render(m_camera);
+		leftEye.getTexture().bind();
+		glViewport(0, 0, 800, 600);
+		m_renderer.finish();
 		
+		vr::Texture_t leftEyeTexture = { (void*)(uintptr_t)leftEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
+		vr::VRCompositor()->Submit(vr::Eye_Left, &leftEyeTexture);
+		vr::Texture_t rightEyeTexture = { (void*)(uintptr_t)rightEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
+		vr::VRCompositor()->Submit(vr::Eye_Right, &rightEyeTexture);
+
+		glFinish();
+
         m_context.update();
+
+		glFlush();
+		glFinish();
 
         /// Handle Window Events
 		t += dt;
