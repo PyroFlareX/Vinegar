@@ -6,6 +6,8 @@
 Application::Application()
 {
 	pushState(std::make_unique<GameState>(*this));
+	
+	vn::vr::initVR();
 }
 
 void Application::RunLoop()
@@ -16,12 +18,9 @@ void Application::RunLoop()
 	float frames = 0.0f;
 	m_context.clear();
 	m_context.update();
-	vn::vec2i winSize;
-	m_camera.getHMDptr()->GetRecommendedRenderTargetSize(reinterpret_cast<uint32_t*>(&winSize.x), reinterpret_cast<uint32_t*>(&winSize.y));
+	vn::vec2 winSize = vn::vr::getRecommendedViewportSize();
 	vn::Framebuffer leftEye(winSize);
 	vn::Framebuffer rightEye(winSize);
-
-	vr::VRCompositor();
 	
 //===================================================================================
 	
@@ -43,12 +42,12 @@ void Application::RunLoop()
         currentState().update(dt);
 		currentState().lateUpdate(&m_camera);
 		m_camera.update();
+		vn::vr::updateTracking();
 
         /// Draw
 		currentState().render(&m_renderer);
 
         /// Render
-		m_context.clear();
 		///If VR, then render one for each eye
 		glViewport(0, 0, winSize.x, winSize.y);
 		leftEye.bind();
@@ -56,17 +55,18 @@ void Application::RunLoop()
 		rightEye.bind();
 		m_renderer.render(m_camera);
 		leftEye.getTexture().bind();
-		glViewport(0, 0, 800, 600);
-		m_renderer.finish();
 		
 		vr::Texture_t leftEyeTexture = { (void*)(uintptr_t)leftEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
-		vr::VRCompositor()->Submit(vr::Eye_Left, &leftEyeTexture);
+		vn::vr::m_pCompositor->Submit(vr::Eye_Left, &leftEyeTexture);
 		vr::Texture_t rightEyeTexture = { (void*)(uintptr_t)rightEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
-		vr::VRCompositor()->Submit(vr::Eye_Right, &rightEyeTexture);
-
-		glFinish();
+		vn::vr::m_pCompositor->Submit(vr::Eye_Right, &rightEyeTexture);
+		
+		glViewport(0, 0, 800, 888);
+		m_renderer.finish();
 
         m_context.update();
+
+		m_context.clear();
 
 		glFlush();
 		glFinish();
@@ -82,6 +82,7 @@ void Application::RunLoop()
 		}
 		handleEvents();
     }
+	vn::vr::ShutdownVR();
 	m_context.close();
 }
 

@@ -25,6 +25,7 @@
     <ClCompile Include="Engine\Types\Types.cpp" />
     <ClCompile Include="Engine\Util\Loaders.cpp" />
     <ClCompile Include="Engine\Util\UtilFunctions.cpp" />
+    <ClCompile Include="Engine\Util\VRUtils.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Backends\NX\GL\NXContext.cpp" />
     <ClCompile Include="src\Backends\NX\NXInput.cpp" />
@@ -53,6 +54,7 @@
     <ClInclude Include="Engine\Types\Types.h" />
     <ClInclude Include="Engine\Util\Loaders.h" />
     <ClInclude Include="Engine\Util\UtilFunctions.h" />
+    <ClInclude Include="Engine\Util\VRUtils.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Backends\Context.h" />
     <ClInclude Include="src\Backends\Input.h" />
