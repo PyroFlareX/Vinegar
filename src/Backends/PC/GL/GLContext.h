@@ -2,7 +2,7 @@
 #define CONTEXT_H
 
 // GLAD
-#include "../../../../Engine/glad/glad/glad.h"
+#include "../../../../Engine/Engine.h"
 // GLFW
 #include <GLFW/glfw3.h>
 
