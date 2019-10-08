@@ -61,7 +61,7 @@ void Application::RunLoop()
 		vr::Texture_t rightEyeTexture = { (void*)(uintptr_t)rightEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
 		vn::vr::m_pCompositor->Submit(vr::Eye_Right, &rightEyeTexture);
 		
-		glViewport(0, 0, 800, 888);
+		glViewport(0, 0, 1280, 720);
 		m_renderer.finish();
 
         m_context.update();

@@ -6,8 +6,8 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
-constexpr int HEIGHT = 888;
-constexpr int WIDTH = 800;
+constexpr int HEIGHT = 720;
+constexpr int WIDTH = 1280;
 
 class Context
 {
