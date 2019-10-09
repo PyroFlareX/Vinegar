@@ -69,6 +69,7 @@ namespace vn
 			m_pHMD = ::vr::VR_Init(&eError, ::vr::VRApplication_Scene);
 			bool result;
 
+
 			if (eError == ::vr::VRInitError_None)
 			{
 				m_pCompositor = ::vr::VRCompositor();
@@ -77,7 +78,7 @@ namespace vn
 				projMatrixR = getProjMatrix(::vr::Eye_Right);
 				viewMatrixL = getViewMatrix(::vr::Eye_Left);
 				viewMatrixR = getViewMatrix(::vr::Eye_Right);
-
+				
 				result = true;
 			}
 			return result;
