@@ -8,6 +8,8 @@
 #include "Resources/Timer.h"
 #include "Resources/Framebuffer.h"
 
+#include "Util/VRUtils.h"
+
 namespace vn
 {
 

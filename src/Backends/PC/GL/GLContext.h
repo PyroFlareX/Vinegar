@@ -2,12 +2,12 @@
 #define CONTEXT_H
 
 // GLAD
-#include "../../../../Engine/glad/glad/glad.h"
+#include "../../../../Engine/Engine.h"
 // GLFW
 #include <GLFW/glfw3.h>
 
-constexpr int HEIGHT = 600;
-constexpr int WIDTH = 800;
+constexpr int HEIGHT = 720;
+constexpr int WIDTH = 1280;
 
 class Context
 {

@@ -17,6 +17,7 @@ class Renderer
 		void drawObject(vn::Transform& entity);
 		void doCompute();
 		void render(Camera& cam);
+		void finish();
 
 		void clearQueue();
 
@@ -30,8 +31,6 @@ class Renderer
 		CubeRenderer m_cubeRenderer;
 		GeneralRenderer m_generalRenderer;
 		ComputeRenderer m_computeRenderer;
-
-		vn::Framebuffer m_framebuffer;
 
 		Model m_quad;
 		Shader m_shader;

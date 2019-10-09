@@ -73,8 +73,8 @@ void GameState::render(Renderer* renderer)
 		vn::Transform entity;
 		entity.pos = vn::vec3(1.0f, 0.0f, 1.0f);
 		entity.pos = cubePositions[i];
-		//entity.rescale(entity, vn::vec3(0.15f, 0.15f, 0.15f));
-		entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 100000.0), 0));
+		entity.rescale(entity, vn::vec3(0.15f, 0.15f, 0.15f));
+		entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 10000.0), 0));
 		renderer->drawObject(entity);
 	}
 		

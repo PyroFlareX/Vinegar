@@ -31,10 +31,15 @@ void GeneralRenderer::render(Camera& cam)
 {
 	vn::vec3 lightpos(5.0f, 0.0f, -1.0f);
 
+	vr::Hmd_Eye nEye;
+	static bool left = false;
+
+	left = !left;
+
 	m_shader.use();
 	m_generalModel.bindVAO();
 	tex.bind();
-
+	//cam.getProjMatrix() cam.getViewMatrix())
 	m_shader.setMat4("view", cam.getViewMatrix());
 	m_shader.setMat4("proj", cam.getProjMatrix());
 	m_shader.setVec3("lightsrc", lightpos);
