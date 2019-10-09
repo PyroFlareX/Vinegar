@@ -31,5 +31,17 @@ namespace vn
 			
 			device.pos = vec3(deviceMatrix[0][3], deviceMatrix[1][3], deviceMatrix[2][3]);
 		}
+
+		/*inline void updateTracking()
+		{
+			//m_pHMD->GetDeviceToAbsoluteTrackingPose(::vr::ETrackingUniverseOrigin::TrackingUniverseStanding, 0.0f, TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount);
+			::vr::EVRCompositorError eError = m_pCompositor->WaitGetPoses(TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount, nullptr, 0);
+			if (eError != ::vr::EVRCompositorError::VRCompositorError_None)
+			{
+				std::cout << "Problem!\n";
+			}
+			//TrackedDevicePose[0] is the HMD device ID
+			HMDMatrix = glm::inverse(convertToMat4(TrackedDevicePose[0].mDeviceToAbsoluteTracking));
+		}*/
 	}
 }

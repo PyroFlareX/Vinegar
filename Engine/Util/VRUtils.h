@@ -3,6 +3,7 @@
 
 #include "../Types/Types.h"
 #include <openvr.h>
+#include <iostream>
 
 namespace vn
 {
@@ -52,7 +53,6 @@ namespace vn
 
 		inline mat4 getViewMatrix(::vr::Hmd_Eye nEye)
 		{
-
 			return convertToMat4(m_pHMD->GetEyeToHeadTransform(nEye));
 		}
 
@@ -85,9 +85,9 @@ namespace vn
 
 		inline void updateTracking()
 		{
-			m_pHMD->GetDeviceToAbsoluteTrackingPose(::vr::ETrackingUniverseOrigin::TrackingUniverseStanding, 0.0f, TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount);
-			//m_pCompositor->WaitGetPoses(TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount, nullptr, 0);
-
+			//m_pHMD->GetDeviceToAbsoluteTrackingPose(::vr::ETrackingUniverseOrigin::TrackingUniverseStanding, 0.0f, TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount);
+			::vr::EVRCompositorError eError =  m_pCompositor->WaitGetPoses(TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount, nullptr, 0);
+			//std::cout << eError << std::endl;
 			//TrackedDevicePose[0] is the HMD device ID
 			HMDMatrix = glm::inverse(convertToMat4(TrackedDevicePose[0].mDeviceToAbsoluteTracking));
 		}

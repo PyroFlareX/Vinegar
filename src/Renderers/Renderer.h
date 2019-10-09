@@ -32,8 +32,6 @@ class Renderer
 		GeneralRenderer m_generalRenderer;
 		ComputeRenderer m_computeRenderer;
 
-		vn::Framebuffer m_framebuffer;
-
 		Model m_quad;
 		Shader m_shader;
 };

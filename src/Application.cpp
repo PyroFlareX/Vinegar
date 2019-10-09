@@ -57,7 +57,7 @@ void Application::RunLoop()
 		leftEye.getTexture().bind();
 		
 		vr::Texture_t leftEyeTexture = { (void*)(uintptr_t)leftEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
-		vr::VRCompositor()->Submit(vr::Eye_Left, &leftEyeTexture);
+		std::cout << vr::VRCompositor()->Submit(vr::Eye_Left, &leftEyeTexture) << std::endl;
 		vr::Texture_t rightEyeTexture = { (void*)(uintptr_t)rightEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
 		vr::VRCompositor()->Submit(vr::Eye_Right, &rightEyeTexture);
 		
@@ -65,8 +65,6 @@ void Application::RunLoop()
 		m_renderer.finish();
 
         m_context.update();
-
-		m_context.clear();
 
 		glFlush();
 		glFinish();

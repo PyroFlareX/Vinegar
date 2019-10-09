@@ -1,6 +1,6 @@
 #include "Renderer.h"
 
-Renderer::Renderer()	:	m_framebuffer(vn::vec2(800, 600))
+Renderer::Renderer()
 {
 	m_shader.load("res/Shaders/quad.vs", "res/Shaders/quad.fs");
 
@@ -49,7 +49,6 @@ void Renderer::doCompute()
 void Renderer::render(Camera& cam)
 {
 	//Main Pass
-	//m_framebuffer.bind();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
 	m_cubeRenderer.render(cam);
@@ -65,7 +64,6 @@ void Renderer::finish()
 	m_shader.use();
 	m_quad.bindVAO();
 	glDisable(GL_DEPTH_TEST);
-	//m_framebuffer.getTexture().bind();
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	clearQueue();
