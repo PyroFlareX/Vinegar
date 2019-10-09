@@ -54,13 +54,13 @@ void Application::RunLoop()
 		m_renderer.render(m_camera);
 		rightEye.bind();
 		m_renderer.render(m_camera);
-		leftEye.getTexture().bind();
 		
 		vr::Texture_t leftEyeTexture = { (void*)(uintptr_t)leftEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
 		vr::VRCompositor()->Submit(vr::Eye_Left, &leftEyeTexture);
 		vr::Texture_t rightEyeTexture = { (void*)(uintptr_t)rightEye.getTexture().ID, vr::TextureType_OpenGL, vr::ColorSpace_Gamma };
 		vr::VRCompositor()->Submit(vr::Eye_Right, &rightEyeTexture);
 		
+		leftEye.getTexture().bind();
 		glViewport(0, 0, 1280, 720);
 		m_renderer.finish();
 

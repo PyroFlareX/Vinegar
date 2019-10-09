@@ -53,13 +53,12 @@ namespace vn
 
 		inline mat4 getViewMatrix(::vr::Hmd_Eye nEye)
 		{
-			return convertToMat4(m_pHMD->GetEyeToHeadTransform(nEye));
+			return glm::inverse(convertToMat4(m_pHMD->GetEyeToHeadTransform(nEye)));
 		}
 
 		inline mat4 getProjMatrix(::vr::Hmd_Eye nEye)
 		{
-			glm::mat4 viewMatrix = convertToMat4(m_pHMD->GetProjectionMatrix(nEye, 0.1f, 1000.0f));
-			return glm::inverse(viewMatrix);
+			return convertToMat4(m_pHMD->GetProjectionMatrix(nEye, 0.1f, 1000.0f));
 		}
 
 		inline bool initVR()
