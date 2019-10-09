@@ -61,36 +61,9 @@ namespace vn
 			return convertToMat4(m_pHMD->GetProjectionMatrix(nEye, 0.1f, 1000.0f));
 		}
 
-		inline bool initVR()
-		{
-			// Loading the SteamVR Runtime
-			::vr::EVRInitError eError = ::vr::VRInitError_None;
-			m_pHMD = ::vr::VR_Init(&eError, ::vr::VRApplication_Scene);
-			bool result;
+		bool initVR();
 
-
-			if (eError == ::vr::VRInitError_None)
-			{
-				m_pCompositor = ::vr::VRCompositor();
-
-				projMatrixL = getProjMatrix(::vr::Eye_Left);
-				projMatrixR = getProjMatrix(::vr::Eye_Right);
-				viewMatrixL = getViewMatrix(::vr::Eye_Left);
-				viewMatrixR = getViewMatrix(::vr::Eye_Right);
-				
-				result = true;
-			}
-			return result;
-		}
-
-		inline void updateTracking()
-		{
-			//m_pHMD->GetDeviceToAbsoluteTrackingPose(::vr::ETrackingUniverseOrigin::TrackingUniverseStanding, 0.0f, TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount);
-			::vr::EVRCompositorError eError =  m_pCompositor->WaitGetPoses(TrackedDevicePose, ::vr::k_unMaxTrackedDeviceCount, nullptr, 0);
-			//std::cout << eError << std::endl;
-			//TrackedDevicePose[0] is the HMD device ID
-			HMDMatrix = glm::inverse(convertToMat4(TrackedDevicePose[0].mDeviceToAbsoluteTracking));
-		}
+		void updateTracking();
 
 		//mat4 deviceMatrix is essentially the model matrix
 		inline Transform getDeviceTransform(uint32_t deviceIndex)
@@ -106,10 +79,7 @@ namespace vn
 
 		}
 
-		inline void ShutdownVR()
-		{
-			::vr::VR_Shutdown();
-		}
+		void ShutdownVR();
 
 		inline vec2 getRecommendedViewportSize()
 		{

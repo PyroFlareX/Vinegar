@@ -40,8 +40,8 @@ void GeneralRenderer::render(Camera& cam)
 	m_generalModel.bindVAO();
 	tex.bind();
 	//cam.getProjMatrix() cam.getViewMatrix())
-	m_shader.setMat4("view", (left ? vn::vr::viewMatrixL : vn::vr::viewMatrixR) * vn::vr::HMDMatrix);
-	m_shader.setMat4("proj", left ? vn::vr::projMatrixL : vn::vr::projMatrixR);
+	m_shader.setMat4("view", cam.getViewMatrix());
+	m_shader.setMat4("proj", cam.getProjMatrix());
 	m_shader.setVec3("lightsrc", lightpos);
 
 	glEnable(GL_CULL_FACE);
@@ -60,8 +60,8 @@ void GeneralRenderer::render(Camera& cam)
 	trans.translate(trans, lightpos);
 	m_lampshader.use();
 	m_lampModel.bindVAO();
-	m_lampshader.setMat4("view", (left ? vn::vr::viewMatrixL : vn::vr::viewMatrixR) * vn::vr::HMDMatrix);
-	m_lampshader.setMat4("proj", left ? vn::vr::projMatrixL : vn::vr::projMatrixR);
+	m_lampshader.setMat4("view", cam.getViewMatrix());
+	m_lampshader.setMat4("proj", cam.getProjMatrix());
 	m_lampshader.setMat4("model", makeModelMatrix(trans));
 	glDrawElements(GL_TRIANGLES, m_lampModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 }

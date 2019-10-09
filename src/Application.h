@@ -16,6 +16,9 @@ class Application
 public:
     Application();
 
+	//Configuration Settings
+	void setModeVR(bool haveVR) noexcept;
+
     void RunLoop();
 
     //State Stuff
@@ -39,6 +42,8 @@ private:
 	Camera m_camera;
     std::vector<std::unique_ptr<Basestate>> m_states;
 	Renderer m_renderer;
+
+	bool VRmode;
 };
 
 
