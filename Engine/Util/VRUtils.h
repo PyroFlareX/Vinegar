@@ -68,7 +68,7 @@ namespace vn
 		//mat4 deviceMatrix is essentially the model matrix
 		inline Transform getDeviceTransform(uint32_t deviceIndex)
 		{
-			if (deviceIndex >= ::vr::k_unMaxTrackedDeviceCount)
+			if (TrackedDevicePose[deviceIndex].bDeviceIsConnected && deviceIndex >= ::vr::k_unMaxTrackedDeviceCount)
 			{
 				return Transform();
 			}
@@ -76,7 +76,7 @@ namespace vn
 			Transform device;
 
 			device.pos = vec3(deviceMatrix[0][3], deviceMatrix[1][3], deviceMatrix[2][3]);
-
+			device.scale = vec3(deviceMatrix[0][0], deviceMatrix[1][1], deviceMatrix[2][2]);
 		}
 
 		void ShutdownVR();

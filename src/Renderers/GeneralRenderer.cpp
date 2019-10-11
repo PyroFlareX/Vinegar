@@ -11,12 +11,33 @@ GeneralRenderer::GeneralRenderer()
 	m_lampshader.load("res/Shaders/lamp.vs", "res/Shaders/lamp.fs");
 
 	tex.loadFromImage(img);
-	
+
+	int choice = rand() % 5;
+	std::cout << "Pick Model: \n\t1. Sphere\n\t2. Cube\n\t3. Monkey\n\t4. Torus" << std::endl;
+	//std::cin >> choice;
+
+	switch (choice)
+	{
+	case 1:
+		m_generalModel.addData(vn::loadMeshFromObj("res/Models/sphere.obj"));
+		break;
+	case 2:
+		m_generalModel.addData(vn::loadMeshFromObj("res/Models/cube.obj"));
+		break;
+	case 3:
+		m_generalModel.addData(vn::loadMeshFromObj("res/Models/Monkey.obj"));
+		break;
+	case 4:
+		m_generalModel.addData(vn::loadMeshFromObj("res/Models/Torus.obj"));
+		break;
+	default:
+		m_generalModel.addData(vn::loadMeshFromObj("res/Models/sphere.obj"));
+		break;
+	}
+
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/Sword.obj"));
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/mythra.obj"));
-	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/cube.obj"));
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/teapot.obj"));
-	m_generalModel.addData(vn::loadMeshFromObj("res/Models/sphere.obj"));
 	//m_generalModel.addData(vn::loadMeshFromObj("res/Models/chalet.obj"));
 
 	m_lampModel.addData(vn::loadMeshFromObj("res/Models/cube.obj"));
@@ -31,15 +52,10 @@ void GeneralRenderer::render(Camera& cam)
 {
 	vn::vec3 lightpos(5.0f, 0.0f, -1.0f);
 
-	vr::Hmd_Eye nEye;
-	static bool left = false;
-
-	left = !left;
-
 	m_shader.use();
 	m_generalModel.bindVAO();
 	tex.bind();
-	//cam.getProjMatrix() cam.getViewMatrix())
+
 	m_shader.setMat4("view", cam.getViewMatrix());
 	m_shader.setMat4("proj", cam.getProjMatrix());
 	m_shader.setVec3("lightsrc", lightpos);

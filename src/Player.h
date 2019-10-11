@@ -8,7 +8,7 @@ class Player : public vn::Transform
 public:
 	Player();
 
-	void getInput(Input::Inputs inputs);
+	void getInput(Input::Inputs inputs, bool VRmode);
 
 	void jump();
 

@@ -21,9 +21,6 @@ class Renderer
 
 		void clearQueue();
 
-		//Mode 0 is default, Mode 1 is VR
-		unsigned int mode = 0;
-
         ~Renderer();
     protected:
 

@@ -5,7 +5,7 @@ Camera::Camera(int Mode)	:	mode(Mode)
 	lerp = 2.5f;
 	if (mode == 0)
 	{
-		proj = vn::makeProjectionMatrix(80.0f, vn::vec2(800, 600));
+		proj = vn::makeProjectionMatrix(80.0f, vn::vec2(1280, 720));
 	}
 
 	pos = vn::vec3(0.0f, 0.0f, 3.0f);

@@ -20,7 +20,7 @@ bool GameState::input()
 	//{
 		vInput = Input::getInput();
 
-		m_player.getInput(vInput);
+		m_player.getInput(vInput, false);
 
 		
 		//if (vInput.pause)
@@ -73,7 +73,7 @@ void GameState::render(Renderer* renderer)
 		vn::Transform entity;
 		entity.pos = vn::vec3(1.0f, 0.0f, 1.0f);
 		entity.pos = cubePositions[i];
-		entity.rescale(entity, vn::vec3(0.15f, 0.15f, 0.15f));
+		entity.rescale(entity, vn::vec3(0.5f, 0.5f, 0.5f));
 		entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 10000.0), 0));
 		renderer->drawObject(entity);
 	}
