@@ -12,7 +12,12 @@
 
 namespace vn
 {
+	typedef struct
+	{
+		Transform transform;
+		//Model mesh;
 
 
+	} GameObject;
 
 }

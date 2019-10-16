@@ -16,7 +16,6 @@ public:
 
 	~Player();
 private:
-	vn::vec3 velocity;
 
 	bool isFlying;
 };

@@ -2,10 +2,12 @@
 
 
 
-GameState::GameState(Application& app)	: /*m_world(app.getCam(), m_player),*/	Basestate(app)
+GameState::GameState(Application& app)	:	Basestate(app)
 {
 	TryPause = false;
 	app.getCam().follow(m_player);
+
+
 
 }
 
@@ -59,11 +61,11 @@ void GameState::render(Renderer* renderer)
 	glm::vec3 cubePositions[] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
 		glm::vec3(2.0f,  5.0f, -15.0f),
-		glm::vec3(-2.0f, -2.0f, -3.0f),
-		glm::vec3(-4.0f, -2.0f, -12.0f),
-		glm::vec3(2.0f, -1.0f, -4.0f),
+		glm::vec3(-2.0f, 2.0f, -3.0f),
+		glm::vec3(-4.0f, 2.0f, -12.0f),
+		glm::vec3(2.0f, 1.0f, -4.0f),
 		glm::vec3(-2.0f,  3.0f, -8.0f),
-		glm::vec3(1.0f, -2.0f, -3.0f),
+		glm::vec3(1.0f, 2.0f, -3.0f),
 		glm::vec3(2.0f,  2.0f, -3.0f),
 		glm::vec3(2.0f,  0.0f, -2.0f),
 		glm::vec3(-1.0f,  1.0f, -2.0f)

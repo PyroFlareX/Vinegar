@@ -17,7 +17,7 @@ void Player::getInput(Input::Inputs vInput, bool VRmode)
 
 		change.x += glm::cos(glm::radians(rot.y)) * speed * vInput.LX;
 		change.z += glm::sin(glm::radians(rot.y)) * speed * vInput.LX;
-
+		
 		if (vInput.up)
 		{
 			jump();

@@ -9,10 +9,10 @@ GeneralRenderer::GeneralRenderer()
 
 	m_shader.load("res/Shaders/model.vs", "res/Shaders/model.fs");
 	m_lampshader.load("res/Shaders/lamp.vs", "res/Shaders/lamp.fs");
-
+	
 	tex.loadFromImage(img);
-
-	int choice = rand() % 5;
+	srand(rand() * rand() - 2 * rand());
+	int choice = 1;//rand() % 5;
 	std::cout << "Pick Model: \n\t1. Sphere\n\t2. Cube\n\t3. Monkey\n\t4. Torus" << std::endl;
 	//std::cin >> choice;
 
@@ -68,6 +68,22 @@ void GeneralRenderer::render(Camera& cam)
 		m_shader.setMat4("model", vn::makeModelMatrix(entity));
 		m_shader.setMat4("normmat", vn::makeNormalMatrix(entity));
 		
+		glDrawElements(GL_TRIANGLES, m_generalModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
+	}
+	
+	vn::Transform t;
+	for (int i = 1; i <= 4; ++i)
+	{
+		t = vn::vr::getDeviceTransform(i);
+		t.rescale(t, vn::vec3(0.1f, 0.1f, 0.1f));
+
+		vn::mat4 device = vn::vr::getDeviceMatrix(i);
+		device = glm::scale(device, t.scale);
+		
+
+		m_shader.setMat4("model", device);
+		m_shader.setMat4("normmat", vn::mat3(glm::transpose(glm::inverse(device))));
+
 		glDrawElements(GL_TRIANGLES, m_generalModel.getNumIndicies(), GL_UNSIGNED_INT, nullptr);
 	}
 

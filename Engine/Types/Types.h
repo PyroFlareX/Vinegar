@@ -29,7 +29,11 @@ namespace vn
 		vec3 pos = vec3(0.0f, 0.0f, 0.0f);
 		vec3 rot = vec3(0.0f, 0.0f, 0.0f);
 		vec3 scale = vec3(1.0f, 1.0f, 1.0f);
-		vec3 origin = vec3(0.0f, 0.0f, 0.0f);
+		
+		vec3 angularMomentum = vec3(0.0f);
+		vec3 velocity = vec3(0.0f);
+
+		bool interactable = true;
 
 		static Transform& translate(Transform& entity, const vec3& offset)
 		{

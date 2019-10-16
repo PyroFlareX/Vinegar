@@ -39,6 +39,7 @@
     <ClCompile Include="src\Renderers\GeneralRenderer.cpp" />
     <ClCompile Include="src\Renderers\Renderer.cpp" />
     <ClCompile Include="src\States\Gamestate.cpp" />
+    <ClCompile Include="src\World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h" />
@@ -70,6 +71,7 @@
     <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\States\Basestate.h" />
     <ClInclude Include="src\States\Gamestate.h" />
+    <ClInclude Include="src\World\World.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

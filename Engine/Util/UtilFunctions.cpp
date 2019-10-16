@@ -1,6 +1,7 @@
 #include "UtilFunctions.h"
 
-
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/matrix_decompose.hpp>
 
 namespace vn
 {
@@ -24,13 +25,13 @@ namespace vn
 		return vec4(((pos2 - pos1) * gradient) + pos1);
 	}
 
-	const mat4 makeProjectionMatrix(const float fov, const vec2 contextSize) noexcept
+	mat4 makeProjectionMatrix(const float fov, const vec2 contextSize) noexcept
 	{
 		mat4 proj = glm::perspective(glm::radians(fov), contextSize.x / contextSize.y, 0.001f, 1000.0f);
 		return proj;
 	}
 
-	const mat4 makeViewMatrix(const Transform& camera) noexcept
+	mat4 makeViewMatrix(const Transform& camera) noexcept
 	{
 		mat4 matrix = mat4(1.0f);
 
@@ -43,7 +44,8 @@ namespace vn
 		return matrix;
 	}
 
-	const mat4 makeModelMatrix(const Transform& entity) noexcept
+	//Rotations in Degrees, NOT RADIANS
+	mat4 makeModelMatrix(const Transform& entity) noexcept
 	{
 		mat4 matrix = mat4(1.0f);
 
@@ -57,8 +59,26 @@ namespace vn
 
 		return matrix;
 	}
-	const mat3 makeNormalMatrix(const Transform& entity) noexcept
+	mat3 makeNormalMatrix(const Transform& entity) noexcept
 	{
 		return mat3(glm::transpose(glm::inverse(makeModelMatrix(entity))));
+	}
+	Transform getTransformFromModelMatrix(mat4& matrix) noexcept
+	{
+		Transform trans;
+		glm::vec3 scale;
+		glm::quat rot;
+		glm::vec3 translation;
+		glm::vec3 skew;
+		glm::vec4 perspective;
+		glm::decompose(matrix, scale, rot, translation, skew, perspective);
+		rot = glm::conjugate(rot);
+
+		trans.pos = translation;
+		trans.scale = scale;
+		trans.rot = glm::eulerAngles(rot);
+		trans.rot = vec3(glm::degrees(trans.rot.x), glm::degrees(trans.rot.y), glm::degrees(trans.rot.z));
+
+		return trans;
 	}
 }

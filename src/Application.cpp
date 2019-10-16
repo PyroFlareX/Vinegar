@@ -59,11 +59,6 @@ void Application::RunLoop()
 		currentState().lateUpdate(&m_camera);
 		m_camera.update();
 
-		if (VRmode)
-		{
-			vn::vr::updateTracking();
-		}
-
         /// Draw
 		currentState().render(&m_renderer);
 
@@ -71,6 +66,8 @@ void Application::RunLoop()
 		///If VR, then render one for each eye
 		if (VRmode)
 		{
+			vn::vr::updateTracking();
+
 			glViewport(0, 0, winSize.x, winSize.y);
 			leftEye.bind();
 			m_renderer.render(camL);
