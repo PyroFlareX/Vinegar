@@ -1,0 +1,9 @@
+[submodule "bullet3"]
+	path = Libraries/bullet3
+	url = https://github.com/bulletphysics/bullet3
+[submodule "glfw"]
+	path = Libraries/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "glm"]
+	path = Libraries/glm
+	url = https://github.com/g-truc/glm.git
