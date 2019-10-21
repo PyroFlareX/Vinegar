@@ -15,7 +15,7 @@ add_executable(Vinegar ${src})
 
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/glm/CMakeLists.txt)
-    add_subdirectory(Libraries/glm)
+    include_directories(Libraries/glm)
 else()
     find_package(glm REQUIRED)
 endif()
@@ -24,6 +24,12 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/glfw/CMakeLists.txt)
     add_subdirectory(Libraries/glfw)
 else()
     find_package(glfw3 REQUIRED)
+endif()
+
+if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/openvr/CMakeLists.txt)
+    add_subdirectory(Libraries/openvr)
+else()
+    find_package(openvr REQUIRED)
 endif()
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/bullet3/CMakeLists.txt)

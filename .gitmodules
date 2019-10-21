@@ -9,4 +9,4 @@
 	url = https://github.com/g-truc/glm.git
 [submodule "Libraries/openvr"]
 	path = Libraries/openvr
-	url = https://github.com/ValveSoftware/openvr
+	url = https://github.com/ValveSoftware/openvr.git
