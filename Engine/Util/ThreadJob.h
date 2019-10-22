@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 
 #include "../Types/Types.h"
 
@@ -99,4 +99,4 @@ namespace vn
 			}
 		}
 	};
-}
+}*/
