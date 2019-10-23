@@ -3,6 +3,17 @@ cmake_minimum_required(VERSION 3.6)
 PROJECT(Vinegar)
 
 
+
+# For Platform
+if(NOT PLATFORM)
+  if(CMAKE_SIZEOF_VOID_P MATCHES 8)
+    set(PLATFORM 64)
+  else()
+    set(PLATFORM 32)
+  endif()
+endif()
+
+# For Sources
 file(GLOB_RECURSE header RELATIVE ${CMAKE_SOURCE_DIR} "src/*.h")
 file(GLOB_RECURSE engineheader RELATIVE ${CMAKE_SOURCE_DIR} "Engine/*.h")
 
@@ -15,7 +26,7 @@ set(osrc ${src} "${CMAKE_SOURCE_DIR}/src/Main.cpp")
 set(osrc ${osrc} "${CMAKE_SOURCE_DIR}/Engine/glad/glad.c")
 add_executable(Vinegar ${src} ${header} ${osrc} ${engineheader} ${enginesrc})
 
-
+# For Libraries
 if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/glm/CMakeLists.txt)
     include_directories(Libraries/glm)
 else()
@@ -30,10 +41,25 @@ else()
 endif()
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/openvr/CMakeLists.txt)
+	set(WINDOWS_PATH_SUFFIXES win${PLATFORM} Win${PLATFORM} x${PLATFORM})
+
     add_subdirectory(Libraries/openvr)
 	include_directories(Libraries/openvr/headers)
+	find_library(OPENVR_LIBRARIES
+		NAMES
+			openvr_api
+		PATHS
+			${CMAKE_CURRENT_SOURCE_DIR}/Libraries/openvr/bin
+			${CMAKE_CURRENT_SOURCE_DIR}/Libraries/openvr/lib
+		PATH_SUFFIXES
+			osx32
+			linux64
+			${WINDOWS_PATH_SUFFIXES}
+		NO_DEFAULT_PATH
+		NO_CMAKE_FIND_ROOT_PATH
+		)
 else()
-    find_package(OpenVR REQUIRED)
+    find_package(openvr_api REQUIRED)
 endif()
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/bullet3/CMakeLists.txt)
@@ -42,5 +68,6 @@ else()
     find_package(bullet3)
 endif()
 
+# For Linking
 target_link_libraries(Vinegar glfw ${GLFW_LIBRARIES} ${OPENVR_LIBRARIES} 
 						BulletDynamics BulletCollision LinearMath)
