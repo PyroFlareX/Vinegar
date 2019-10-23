@@ -12,6 +12,7 @@ file(GLOB_RECURSE enginesrc RELATIVE ${CMAKE_SOURCE_DIR} "Engine/*.cpp")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 set(osrc ${src} "${CMAKE_SOURCE_DIR}/src/Main.cpp")
+set(osrc ${osrc} "${CMAKE_SOURCE_DIR}/Engine/glad/glad.c")
 add_executable(Vinegar ${src} ${header} ${osrc} ${engineheader} ${enginesrc})
 
 
@@ -41,4 +42,5 @@ else()
     find_package(bullet3)
 endif()
 
-target_link_libraries(Vinegar ${LIBS})
+target_link_libraries(Vinegar glfw ${GLFW_LIBRARIES} ${OPENVR_LIBRARIES} 
+						BulletDynamics BulletCollision LinearMath)
