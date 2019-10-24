@@ -47,7 +47,7 @@ void GameState::update(float dt)
 
 
 	m_player.update(dt);
-//	m_world.update();
+	m_world.update(dt);
 }
 
 void GameState::lateUpdate(Camera* cam)
@@ -73,6 +73,7 @@ void GameState::render(Renderer* renderer)
 	for (int i = 0; i < 10; ++i)
 	{
 		vn::Transform entity;
+
 		entity.pos = vn::vec3(1.0f, 0.0f, 1.0f);
 		entity.pos = cubePositions[i];
 		entity.rescale(entity, vn::vec3(0.5f, 0.5f, 0.5f));

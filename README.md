@@ -1,20 +1,30 @@
 # Vinegar
- My 2D/3D rendering engine. Requires C++ 14. It ***attempts*** to follow the code it yourself philosophy, 
+ My 2D/3D rendering engine. Requires C++ 14. It ***attempts*** to follow the code it yourself philosophy.  
 
 # Libraries
- Uses GLFW 3.3, glm, glad (with OpenGL), OpenVR(for interfacing with steamvr), and bullet physics as of writing.
+ Uses GLFW, GLM, OpenVR, and Bullet Physics.
  Planning to use these libraries in the future:  
 -	Networking:		enet
 -	Audio:			OpenAL or opus (depending on platform)
 -	Scripting:		Python embedding in C++
 	
 # Building
- ***TEMPORARY*** The current build system is, well, the default Visual Studio 2017 build system. Before compiling, make sure to change the Additional Includes and Additional Libraries directories.  
-  
- ***New Build System, not yet implemented.*** The new system will use cmake. Example is not yet done.  
+   The build system uses CMake. Should be compatible with Windows and Linux at least.  
+   Build by running these commands:
+   ```
+   git clone https://github.com/PyroFlareX/Vinegar.git
+   cd Vinegar
+   cmake .
+   ```
+   **IGNORE BELOW!!!**  
 
 ## Windows
- Tested to be working.  
+ Works.  
+ To build, first clone this repo (recursively so the submodules are clone). Then   
+ Run 
+ ```
+ cmake .
+ ```
  
 ## Linux
  *Should* work. 

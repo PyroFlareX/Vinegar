@@ -1,4 +1,4 @@
-#include "UtilFunctions.h"
+/*#include "UtilFunctions.h"
 
 
 
@@ -47,9 +47,9 @@ namespace vn
 	{
 		mat4 matrix = mat4(1.0f);
 
-		matrix = glm::rotate(matrix, glm::radians(entity.rot.x), entity.pos/*{ 1, 0, 0 }*/);
-		matrix = glm::rotate(matrix, glm::radians(entity.rot.y), entity.pos/*{ 0, 1, 0 }*/);
-		matrix = glm::rotate(matrix, glm::radians(entity.rot.z), entity.pos/*{ 0, 0, 1 }*/);
+		matrix = glm::rotate(matrix, glm::radians(entity.rot.x), entity.pos/*{ 1, 0, 0 }*//*);
+		matrix = glm::rotate(matrix, glm::radians(entity.rot.y), entity.pos/*{ 0, 1, 0 }*//*);
+		matrix = glm::rotate(matrix, glm::radians(entity.rot.z), entity.pos/*{ 0, 0, 1 }*//*);
 
 		matrix = glm::translate(matrix, entity.pos);
 
@@ -57,4 +57,4 @@ namespace vn
 
 		return matrix;
 	}
-}
+}*/

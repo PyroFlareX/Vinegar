@@ -2,7 +2,7 @@
 #define GAMESTATE_H
 
 #include "Basestate.h"
-//#include "../World/World.h"
+#include "../World/World.h"
 
 #include "../Player.h"
 #include "../Application.h"
@@ -32,7 +32,7 @@ private:
 	Input::Inputs vInput;
 
 	Player m_player;
-	//World m_world;
+	World m_world;
 };
 
 #endif // GAMESTATE_H
