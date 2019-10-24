@@ -64,6 +64,7 @@ endif()
 
 if(EXISTS ${CMAKE_SOURCE_DIR}/Libraries/bullet3/CMakeLists.txt)
     add_subdirectory(Libraries/bullet3)
+	include_directories(Libraries/bullet3/src)
 else()
     find_package(bullet3)
 endif()
