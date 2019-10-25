@@ -17,6 +17,15 @@ class Model;
 
 namespace vn
 {
+	typedef struct
+	{
+		btCollisionShape*	shape;
+		btRigidBody*		body;
+		btMotionState*		motionState;
+		btScalar			mass = 1.0f;
+		btTransform			phyTransform;
+	} PhysicsObject;
+
 	class GameObject
 	{
 	public:
@@ -33,12 +42,6 @@ namespace vn
 		//Internal
 		
 		Model m_model;
-
-		//Physics
-		btCollisionShape* shape;
-		btRigidBody* body;
-		btMotionState* motionState;
-		btScalar mass = 1.0f;
 		
 		//Audio
 
@@ -53,12 +56,22 @@ namespace vn
 			transform.pos += trans.pos;
 			transform.rot += trans.rot;
 			transform.scale = trans.scale;
+
+			physics.phyTransform.setOrigin(physics.phyTransform.getOrigin() + btVector3(trans.pos.x, trans.pos.y, trans.pos.z));
+			
+			btQuaternion quat = physics.phyTransform.getRotation();
+			vec3 r;
+			quat.getEulerZYX(r.z, r.y, r.x);
+			quat.setEuler(r.y + transform.pos.y, r.x + transform.pos.x, r.z + transform.pos.z);
+			physics.phyTransform.setRotation(quat);
+
+			physics.shape->setLocalScaling(btVector3(trans.scale.x, trans.scale.y, trans.scale.z));
 		}
 		void applyTransform(btTransform& trans)
 		{
 			transform;
 
-			phyTransform.setRotation(trans.getRotation());
+			physics.phyTransform.setRotation(trans.getRotation());
 
 			trans.getOrigin().getX();
 			trans.getOrigin().getY();
@@ -68,11 +81,31 @@ namespace vn
 
 		void setTransform(Transform& trans)
 		{
-			transform.pos = trans.pos;
-			transform.rot = trans.rot;
-			transform.scale = trans.scale;
+			transform = trans;
+
+
+			btQuaternion quat;
+			vec3 r;
+			quat.setEuler(transform.pos.y, transform.pos.x, transform.pos.z);
+			physics.phyTransform.setRotation(quat);
+
+			physics.phyTransform.setOrigin(btVector3(trans.pos.x, trans.pos.y, trans.pos.z));
+
+			physics.shape->setLocalScaling(btVector3(trans.scale.x, trans.scale.y, trans.scale.z));
+			physics.body->setAngularVelocity(btVector3(trans.angularMomentum.x, trans.angularMomentum.y, trans.angularMomentum.z));
+			physics.body->setLinearVelocity(btVector3(trans.velocity.x, trans.velocity.y, trans.velocity.z));
 		}
-		void setTransform(btTransform& trans);
+		void setTransform(btTransform& trans)
+		{
+			physics.phyTransform = trans;
+
+			vec3 v;
+			v = vec3(trans.getOrigin().x(), trans.getOrigin().y(), trans.getOrigin().z());
+			transform.pos = v;
+
+			trans.getRotation().getEulerZYX(v.x, v.y, v.z);
+			transform.rot = v;
+		}
 
 		virtual void update()
 		{
@@ -82,9 +115,10 @@ namespace vn
 
 		virtual ~GameObject() = default;
 	private:
-
 		Transform transform;
-		btTransform phyTransform;
+		
+		//Physics
+		PhysicsObject physics;
 	};
 
 }
