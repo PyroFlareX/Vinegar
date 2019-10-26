@@ -4,59 +4,8 @@
 
 GameState::GameState(Application& app)	:	Basestate(app)
 {
-	TryPause = false;
 	app.getCam().follow(m_player);
 
-
-
-}
-
-GameState::~GameState()
-{
-
-}
-
-bool GameState::input()
-{
-	//if (!isPaused)
-	//{
-		vInput = Input::getInput();
-
-		m_player.getInput(vInput, false);
-
-		
-		//if (vInput.pause)
-		{
-			//tryPause();
-		}
-	//}
-	return false;
-}
-
-void GameState::update(float dt)
-{
-	/*if (window->hasFocus() && !TryPause)
-	{
-		isPaused = false;
-	}
-	else
-	{
-		isPaused = true;
-		TryPause = false;
-	}*/
-
-
-	m_player.update(dt);
-	m_world.update(dt);
-}
-
-void GameState::lateUpdate(Camera* cam)
-{
-
-}
-
-void GameState::render(Renderer* renderer)
-{
 	static int x = 0;
 	glm::vec3 cubePositions[] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
@@ -78,14 +27,55 @@ void GameState::render(Renderer* renderer)
 		entity.pos = cubePositions[i];
 		entity.rescale(entity, vn::vec3(0.5f, 0.5f, 0.5f));
 		entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 10000.0), 0));
-		renderer->drawObject(entity);
+
+		vn::GameObject gameobject(entity);
+
+		m_gameObjects.emplace_back(gameobject);
+		m_world.addObject(gameobject);
 	}
+
+}
+
+GameState::~GameState()
+{
+
+}
+
+bool GameState::input()
+{
+
+	vInput = Input::getInput();
+
+	m_player.getInput(vInput, false);
+
+
+	return false;
+}
+
+void GameState::update(float dt)
+{
+	
+
+
+	m_player.update(dt);
+	m_world.update(dt);
+}
+
+void GameState::lateUpdate(Camera* cam)
+{
+
+}
+
+void GameState::render(Renderer* renderer)
+{
+	std::cout << "Gamestate: render\n";
 		
+	for (auto& obj : m_gameObjects)
+	{
+		renderer->drawObject(obj.getCurrentTransform());
+	}
+
 
 	//m_world.renderWorld(app.getCam(), *renderer);
 }
 
-void GameState::tryPause()
-{
-	TryPause = true;
-}

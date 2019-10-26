@@ -8,9 +8,9 @@ World::World()
 	overlappingPairCache =		new btDbvtBroadphase();
 	solver =					new btSequentialImpulseConstraintSolver;
 	dynamicsWorld =				new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
-
-	dynamicsWorld->setGravity(btVector3(0, -10, 0));
 	
+	dynamicsWorld->setGravity(btVector3(0, -10, 0));
+
 
 	// Create a few basic rigid bodies
 /*
@@ -31,23 +31,23 @@ World::World()
 	}*/
 	//the ground is a cube of side 100 at position y = -56.
 	//the sphere will hit it at y = -6, with center at -5
-	/*{
-		//btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.), btScalar(50.), btScalar(50.)));
+	{
+		btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.), btScalar(50.), btScalar(50.)));
 
 		collisionShapes.push_back(groundShape);
 
-		//btTransform groundTransform;
-		//groundTransform.setIdentity();
-	//	groundTransform.setOrigin(btVector3(0, -56, 0));
+		btTransform groundTransform;
+		groundTransform.setIdentity();
+		groundTransform.setOrigin(btVector3(0, -56, 0));
 		
-	//	btScalar mass(0.);
+		btScalar mass(0.);
 		
 		//rigidbody is dynamic if and only if mass is non zero, otherwise static
-	//	bool isDynamic = (mass != 0.f);
+		bool isDynamic = (mass != 0.f);
 		
-	//	btVector3 localInertia(0, 0, 0);
-	//	if (isDynamic)
-	//		groundShape->calculateLocalInertia(mass, localInertia);
+		btVector3 localInertia(0, 0, 0);
+		if (isDynamic)
+			groundShape->calculateLocalInertia(mass, localInertia);
 
 		//using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
 		btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
@@ -56,8 +56,8 @@ World::World()
 		
 		//add the body to the dynamics world
 		dynamicsWorld->addRigidBody(body);
-	}*/
-
+	}
+	/*
 	{
 		//create a dynamic rigidbody
 
@@ -89,32 +89,44 @@ World::World()
 	}
 
 	
-	
-}
-
-void World::addStaticObject(vn::GameObject& obj)
-{
-	m_ground.emplace_back(obj);
+	*/
 }
 
 void World::addObject(vn::GameObject& obj)
 {
-	m_Scene.emplace_back(obj);
+	obj.collider = new btSphereShape(1.0f);
+
+	collisionShapes.push_back(obj.collider);
+
+	/// Create Dynamic Objects
+	vn::vec3 t(0.0f);
+
+	t = obj.getCurrentTransform().pos;
+	std::cout << "After \"addObject()\" function in World.cpp \n";
+
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(btVector3(t.x, t.y, t.z));
+
+
+	/// Rigidbody is dynamic if and only if mass is non zero, otherwise static
+	bool isDynamic = (obj.mass != 0.f);
+	btVector3 localInertia(0, 0, 0);
+	if (isDynamic)
+	{
+		obj.collider->calculateLocalInertia(obj.mass, localInertia);
+	}
+
+	obj.motionState = new btDefaultMotionState(startTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(obj.mass, obj.motionState, obj.collider, localInertia);
+	obj.rigidBody = new btRigidBody(rbInfo);
+
+	dynamicsWorld->addRigidBody(obj.rigidBody);
 }
 
 void World::update(float dt)
 {
-	/*for (auto& obj : m_Scene)
-	{
-		if (obj.transform.pos.y <= 0.0f)
-		{
-			obj.transform.velocity.y = 0.0f;
-		}
-		obj.transform.translate(obj.transform, obj.transform.velocity * dt);
-		//obj.transform.velocity -= obj.transform.velocity * dt;	//Unrealistic, all momentum terminates after 1 second
-
-	}*/
-
+	std::cout << "Start of World Update function\n";
 	for (int i = 0; i < 150; i++)
 	{
 		dynamicsWorld->stepSimulation(1.f / 60.f, 10);
@@ -124,6 +136,7 @@ void World::update(float dt)
 		{
 			btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
 			btRigidBody* body = btRigidBody::upcast(obj);
+			
 			btTransform trans;
 			if (body && body->getMotionState())
 			{
@@ -133,7 +146,7 @@ void World::update(float dt)
 			{
 				trans = obj->getWorldTransform();
 			}
-			printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+			//printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
 		}
 	}
 
@@ -184,7 +197,3 @@ World::~World()
 	collisionShapes.clear();
 }
 
-void World::doCollision(float step)
-{
-
-}

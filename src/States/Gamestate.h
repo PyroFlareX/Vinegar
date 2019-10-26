@@ -19,15 +19,13 @@ public:
 	void lateUpdate(Camera* cam) override;
 	void render(Renderer* renderer) override;
 
-	void tryPause();
 
     ~GameState() override;
 protected:
 
 
 private:
-	bool isPaused;
-	bool TryPause;
+	std::vector<vn::GameObject> m_gameObjects;
 	
 	Input::Inputs vInput;
 

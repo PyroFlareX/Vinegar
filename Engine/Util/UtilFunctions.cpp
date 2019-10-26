@@ -73,7 +73,7 @@ namespace vn
 		glm::vec4 perspective;
 		glm::decompose(matrix, scale, rot, translation, skew, perspective);
 		rot = glm::conjugate(rot);
-
+		
 		trans.pos = translation;
 		trans.scale = scale;
 		trans.rot = glm::eulerAngles(rot);

@@ -10,7 +10,7 @@ class GeneralRenderer
 public:
 	GeneralRenderer();
 
-	void addInstance(vn::Transform& entity);
+	void addInstance(vn::Transform entity);
 	void render(Camera& cam);
 
 	void clearQueue();

@@ -43,13 +43,15 @@ GeneralRenderer::GeneralRenderer()
 	m_lampModel.addData(vn::loadMeshFromObj("res/Models/cube.obj"));
 }
 
-void GeneralRenderer::addInstance(vn::Transform& entity)
+void GeneralRenderer::addInstance(vn::Transform entity)
 {
+	std::cout << "Add to render queue\n";
 	m_queue.push_back(entity);
 }
 
 void GeneralRenderer::render(Camera& cam)
 {
+	std::cout << "Render\n";
 	vn::vec3 lightpos(5.0f, 0.0f, -1.0f);
 
 	m_shader.use();

@@ -9,8 +9,8 @@ class World
 public:
 	World();
 	
-	void addStaticObject(vn::GameObject& obj);
 	void addObject(vn::GameObject& obj);
+
 
 	void update(float dt);
 
@@ -18,9 +18,6 @@ public:
 
 	~World();
 private:
-	void doCollision(float step);
-
-	std::vector<vn::GameObject> m_Scene;
 
 	btDefaultCollisionConfiguration*		collisionConfiguration;
 	btCollisionDispatcher*					dispatcher;
