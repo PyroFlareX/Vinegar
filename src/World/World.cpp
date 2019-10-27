@@ -9,7 +9,7 @@ World::World()
 	solver =					new btSequentialImpulseConstraintSolver;
 	dynamicsWorld =				new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 	
-	dynamicsWorld->setGravity(btVector3(0, -10, 0));
+	dynamicsWorld->setGravity(btVector3(0, -0.05, 0));
 
 
 	// Create a few basic rigid bodies
@@ -97,10 +97,6 @@ void World::addObject(vn::GameObject& obj)
 	collisionShapes.push_back(obj.collider);
 
 	/// Create Dynamic Objects
-	vn::vec3 t(0.0f);
-
-	std::cout << "After \"addObject()\" function in World.cpp \n";
-
 
 	/// Rigidbody is dynamic if and only if mass is non zero, otherwise static
 	bool isDynamic = (obj.mass != 0.f);
@@ -119,7 +115,6 @@ void World::addObject(vn::GameObject& obj)
 
 void World::update(float dt)
 {
-	std::cout << "Start of World Update function\n";
 	for (int i = 0; i < 150; i++)
 	{
 		dynamicsWorld->stepSimulation(1.f / 60.f, 10);

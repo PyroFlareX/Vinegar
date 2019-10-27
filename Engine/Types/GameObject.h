@@ -15,6 +15,7 @@ namespace vn
 		GameObject(Transform& trans, btCollisionShape* colShape) : transform(trans)
 		{
 
+
 			this->collider = colShape;
 
 			hasTransform = true;
@@ -22,6 +23,8 @@ namespace vn
 			btQuaternion quat(transform.rot.y, transform.rot.x, transform.rot.z);
 			btVector3 pos(transform.pos.x, transform.pos.y, transform.pos.z);
 			motionState = new btDefaultMotionState(btTransform(quat, pos));
+
+			init();
 		};
 
 
@@ -35,7 +38,7 @@ namespace vn
 
 		};
 
-
+		// @Brief Returns the current Transform (internal engine) of the oject so it may be used in graphics
 		Transform getCurrentTransform()
 		{
 			if (!hasTransform)
