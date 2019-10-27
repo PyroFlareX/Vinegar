@@ -94,19 +94,12 @@ World::World()
 
 void World::addObject(vn::GameObject& obj)
 {
-	obj.collider = new btSphereShape(1.0f);
-
 	collisionShapes.push_back(obj.collider);
 
 	/// Create Dynamic Objects
 	vn::vec3 t(0.0f);
 
-	t = obj.getCurrentTransform().pos;
 	std::cout << "After \"addObject()\" function in World.cpp \n";
-
-	btTransform startTransform;
-	startTransform.setIdentity();
-	startTransform.setOrigin(btVector3(t.x, t.y, t.z));
 
 
 	/// Rigidbody is dynamic if and only if mass is non zero, otherwise static
@@ -117,7 +110,7 @@ void World::addObject(vn::GameObject& obj)
 		obj.collider->calculateLocalInertia(obj.mass, localInertia);
 	}
 
-	obj.motionState = new btDefaultMotionState(startTransform);
+
 	btRigidBody::btRigidBodyConstructionInfo rbInfo(obj.mass, obj.motionState, obj.collider, localInertia);
 	obj.rigidBody = new btRigidBody(rbInfo);
 

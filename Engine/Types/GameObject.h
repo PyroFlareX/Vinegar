@@ -12,14 +12,16 @@ namespace vn
 	class GameObject
 	{
 	public:
-		GameObject()
+		GameObject(Transform& trans, btCollisionShape* colShape) : transform(trans)
 		{
 
-		};
-		GameObject(Transform& trans) : transform(trans)
-		{
+			this->collider = colShape;
+
 			hasTransform = true;
 			mass = 1.0f;
+			btQuaternion quat(transform.rot.y, transform.rot.x, transform.rot.z);
+			btVector3 pos(transform.pos.x, transform.pos.y, transform.pos.z);
+			motionState = new btDefaultMotionState(btTransform(quat, pos));
 		};
 
 
@@ -45,7 +47,7 @@ namespace vn
 				btQuaternion quat = t.getRotation();
 				quat.getEulerZYX(trans.rot.z, trans.rot.y, trans.rot.x);
 				trans.scale = vec3(collider->getLocalScaling().getX(), collider->getLocalScaling().getY(), collider->getLocalScaling().getZ());
-				return trans;
+				transform = trans;
 			}
 
 			hasTransform = false;

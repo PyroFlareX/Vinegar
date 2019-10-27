@@ -26,9 +26,11 @@ GameState::GameState(Application& app)	:	Basestate(app)
 		entity.pos = vn::vec3(1.0f, 0.0f, 1.0f);
 		entity.pos = cubePositions[i];
 		entity.rescale(entity, vn::vec3(0.5f, 0.5f, 0.5f));
-		entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 10000.0), 0));
+		//entity.rotate(entity, vn::vec3(0, 360 * sin(x++ / 10000.0), 0));
 
-		vn::GameObject gameobject(entity);
+		btCollisionShape* shape = new btSphereShape(1.0f);
+
+		vn::GameObject gameobject(entity, shape);
 
 		m_gameObjects.emplace_back(gameobject);
 		m_world.addObject(gameobject);
@@ -67,9 +69,7 @@ void GameState::lateUpdate(Camera* cam)
 }
 
 void GameState::render(Renderer* renderer)
-{
-	std::cout << "Gamestate: render\n";
-		
+{		
 	for (auto& obj : m_gameObjects)
 	{
 		renderer->drawObject(obj.getCurrentTransform());
