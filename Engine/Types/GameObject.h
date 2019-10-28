@@ -43,7 +43,6 @@ namespace vn
 		{
 			if (!hasTransform)
 			{
-				
 				Transform trans;
 				btTransform t;
 				motionState->getWorldTransform(t);

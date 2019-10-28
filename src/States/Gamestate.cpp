@@ -65,18 +65,14 @@ void GameState::update(float dt)
 
 void GameState::lateUpdate(Camera* cam)
 {
-
+	
 }
 
 void GameState::render(Renderer* renderer)
 {		
 	for (auto& obj : m_gameObjects)
 	{
-		//auto t = obj.getCurrentTransform();
 		renderer->drawObject(obj.getCurrentTransform());
 	}
-
-
-	//m_world.renderWorld(app.getCam(), *renderer);
 }
 

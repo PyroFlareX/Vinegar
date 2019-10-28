@@ -96,8 +96,6 @@ void World::addObject(vn::GameObject& obj)
 {
 	collisionShapes.push_back(obj.collider);
 
-	/// Create Dynamic Objects
-
 	/// Rigidbody is dynamic if and only if mass is non zero, otherwise static
 	bool isDynamic = (obj.mass != 0.0f);
 	btVector3 localInertia(0, 0, 0);
@@ -109,36 +107,35 @@ void World::addObject(vn::GameObject& obj)
 
 	btRigidBody::btRigidBodyConstructionInfo rbInfo(obj.mass, obj.motionState, obj.collider, localInertia);
 	obj.rigidBody = new btRigidBody(rbInfo);
-
+	
+	obj.rigidBody->setRollingFriction(0.1f);
+	obj.rigidBody->setFriction(0.1f);
+	
 	dynamicsWorld->addRigidBody(obj.rigidBody);
 }
 
 void World::update(float dt)
 {
-	//for (int i = 0; i < 150; i++)
-	//{
-		dynamicsWorld->stepSimulation(dt, 10);
+	// The actual Updating
+	dynamicsWorld->stepSimulation(dt, 10);
+	
+	/// Logging Stuff
+	// Print positions of all objects
+	for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
+	{
+		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
+		btRigidBody* body = btRigidBody::upcast(obj);
 
-		//print positions of all objects
-		for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
+		btTransform trans;
+		if (body && body->getMotionState())
 		{
-			
-			btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
-			btRigidBody* body = btRigidBody::upcast(obj);
-			
-			btTransform trans;
-			if (body && body->getMotionState())
-			{
-				body->getMotionState()->getWorldTransform(trans);
-			}
-			else
-			{
-				trans = obj->getWorldTransform();
-			}
-			//if(i == 149)
-			printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+			body->getMotionState()->getWorldTransform(trans);
 		}
-	//}
+		else
+		{
+			trans = obj->getWorldTransform();
+		}
+	}
 
 }
 
