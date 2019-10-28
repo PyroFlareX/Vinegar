@@ -72,6 +72,7 @@ void GameState::render(Renderer* renderer)
 {		
 	for (auto& obj : m_gameObjects)
 	{
+		//auto t = obj.getCurrentTransform();
 		renderer->drawObject(obj.getCurrentTransform());
 	}
 

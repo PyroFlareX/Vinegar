@@ -1,6 +1,6 @@
 #include "../Input.h"
 
-#ifdef _WIN32
+#ifndef _NX
 
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -9,10 +9,10 @@ namespace Input
 {
 	GLFWwindow* window;
 
-	Inputs Input::getInput()
+	Inputs getInput()
 	{
 		double x = 0, y = 0;
-		Input::Inputs input = { false, false, 0, 0, 0, 0, false, false };
+		Inputs input = { false, false, 0, 0, 0, 0, false, false };
 
 		static bool enableCursor = false;
 		enableCursor = false;
@@ -65,4 +65,4 @@ namespace Input
 	}
 }
 
-#endif // WIN32
+#endif // _NX

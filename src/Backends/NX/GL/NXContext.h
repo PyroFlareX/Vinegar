@@ -16,7 +16,7 @@ class Context
     public:
         Context();
 
-        //sf::RenderWindow* getContext();
+
         void clear();
         void update();
         void draw();

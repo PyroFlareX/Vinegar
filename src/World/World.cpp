@@ -9,7 +9,7 @@ World::World()
 	solver =					new btSequentialImpulseConstraintSolver;
 	dynamicsWorld =				new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 	
-	dynamicsWorld->setGravity(btVector3(0, -0.05, 0));
+	dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
 
 	// Create a few basic rigid bodies
@@ -99,7 +99,7 @@ void World::addObject(vn::GameObject& obj)
 	/// Create Dynamic Objects
 
 	/// Rigidbody is dynamic if and only if mass is non zero, otherwise static
-	bool isDynamic = (obj.mass != 0.f);
+	bool isDynamic = (obj.mass != 0.0f);
 	btVector3 localInertia(0, 0, 0);
 	if (isDynamic)
 	{
@@ -115,13 +115,14 @@ void World::addObject(vn::GameObject& obj)
 
 void World::update(float dt)
 {
-	for (int i = 0; i < 150; i++)
-	{
-		dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+	//for (int i = 0; i < 150; i++)
+	//{
+		dynamicsWorld->stepSimulation(dt, 10);
 
 		//print positions of all objects
 		for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
 		{
+			
 			btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];
 			btRigidBody* body = btRigidBody::upcast(obj);
 			
@@ -134,9 +135,10 @@ void World::update(float dt)
 			{
 				trans = obj->getWorldTransform();
 			}
-			//printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+			//if(i == 149)
+			printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
 		}
-	}
+	//}
 
 }
 

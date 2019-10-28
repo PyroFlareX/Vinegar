@@ -25,7 +25,7 @@ namespace vn
 
 
 
-		inline mat4& convertToMat4(::vr::HmdMatrix44_t mat)
+		inline mat4 convertToMat4(::vr::HmdMatrix44_t mat)
 		{
 			const float matrix[] =
 			{
@@ -38,7 +38,7 @@ namespace vn
 			return out;
 		}
 
-		inline mat4& convertToMat4(::vr::HmdMatrix34_t mat)
+		inline mat4 convertToMat4(::vr::HmdMatrix34_t mat)
 		{
 			const float matrix[] =
 			{
@@ -51,7 +51,7 @@ namespace vn
 			return out;
 		}
 		
-		inline vec3& convertToVec3(::vr::HmdVector3_t vector3)
+		inline vec3 convertToVec3(::vr::HmdVector3_t vector3)
 		{
 			vec3 v(vector3.v[0], vector3.v[1], vector3.v[2]);
 			return v;

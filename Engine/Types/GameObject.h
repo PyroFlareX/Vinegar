@@ -39,10 +39,11 @@ namespace vn
 		};
 
 		// @Brief Returns the current Transform (internal engine) of the oject so it may be used in graphics
-		Transform getCurrentTransform()
+		Transform& getCurrentTransform()
 		{
 			if (!hasTransform)
 			{
+				
 				Transform trans;
 				btTransform t;
 				motionState->getWorldTransform(t);

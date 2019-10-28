@@ -35,19 +35,19 @@ namespace vn
 
 		bool interactable = true;
 
-		static Transform& translate(Transform& entity, const vec3& offset)
+		static Transform translate(Transform& entity, const vec3& offset)
 		{
 			entity.pos += offset;
 			return entity;
 		}
 
-		static Transform& rotate(Transform& entity, const vec3& angle)
+		static Transform rotate(Transform& entity, const vec3& angle)
 		{
 			entity.rot += angle;
 			return entity;
 		}
 
-		static Transform& rescale(Transform& entity, const vec3& relativeScale)
+		static Transform rescale(Transform& entity, const vec3& relativeScale)
 		{
 			entity.scale = entity.scale * relativeScale;
 			return entity;
