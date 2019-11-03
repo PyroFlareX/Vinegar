@@ -12,9 +12,8 @@ GeneralRenderer::GeneralRenderer()
 	
 	tex.loadFromImage(img);
 	srand(rand() * rand() - 2 * rand());
-	int choice = 1;//rand() % 5;
+	int choice = 1;
 	std::cout << "Pick Model: \n\t1. Sphere\n\t2. Cube\n\t3. Monkey\n\t4. Torus" << std::endl;
-	//std::cin >> choice;
 
 	switch (choice)
 	{
