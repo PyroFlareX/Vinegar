@@ -9,7 +9,7 @@ World::World()
 	solver =					new btSequentialImpulseConstraintSolver;
 	dynamicsWorld =				new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 	
-	dynamicsWorld->setGravity(btVector3(0, -10, 0));
+	dynamicsWorld->setGravity(btVector3(0, -9.8, 0));
 
 
 	// Create a few basic rigid bodies
@@ -39,12 +39,12 @@ World::World()
 		btTransform groundTransform;
 		groundTransform.setIdentity();
 		groundTransform.setOrigin(btVector3(0, -56, 0));
-		
+
 		btScalar mass(0.);
-		
+
 		//rigidbody is dynamic if and only if mass is non zero, otherwise static
 		bool isDynamic = (mass != 0.f);
-		
+
 		btVector3 localInertia(0, 0, 0);
 		if (isDynamic)
 			groundShape->calculateLocalInertia(mass, localInertia);
@@ -53,43 +53,12 @@ World::World()
 		btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
 		btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, groundShape, localInertia);
 		btRigidBody* body = new btRigidBody(rbInfo);
-		
+
+		body->setFriction(0.5f);
+
 		//add the body to the dynamics world
 		dynamicsWorld->addRigidBody(body);
 	}
-	/*
-	{
-		//create a dynamic rigidbody
-
-		//btCollisionShape* colShape = new btBoxShape(btVector3(1,1,1));
-		btCollisionShape* colShape = new btSphereShape(btScalar(1.));
-		collisionShapes.push_back(colShape);
-
-		/// Create Dynamic Objects
-		btTransform startTransform;
-		startTransform.setIdentity();
-		
-		btScalar mass(1.f);
-
-		//rigidbody is dynamic if and only if mass is non zero, otherwise static
-		bool isDynamic = (mass != 0.f);
-
-		btVector3 localInertia(0, 0, 0);
-		if (isDynamic)
-			colShape->calculateLocalInertia(mass, localInertia);
-
-		startTransform.setOrigin(btVector3(2, 10, 0));
-
-		//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
-		btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
-		btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, colShape, localInertia);
-		btRigidBody* body = new btRigidBody(rbInfo);
-
-		dynamicsWorld->addRigidBody(body);
-	}
-
-	
-	*/
 }
 
 void World::addObject(vn::GameObject& obj)
@@ -109,8 +78,11 @@ void World::addObject(vn::GameObject& obj)
 	obj.rigidBody = new btRigidBody(rbInfo);
 	
 	obj.rigidBody->setRollingFriction(0.1f);
-	obj.rigidBody->setFriction(0.1f);
-	
+	obj.rigidBody->setFriction(1.0f);
+	obj.rigidBody->setSpinningFriction(0.1f);
+	obj.rigidBody->setAnisotropicFriction(obj.collider->getAnisotropicRollingFrictionDirection(), btCollisionObject::CF_ANISOTROPIC_ROLLING_FRICTION);
+	//obj.rigidBody->setAngularVelocity(btVector3(0.0f, 0.0f, 15.0f));
+
 	dynamicsWorld->addRigidBody(obj.rigidBody);
 }
 
@@ -120,7 +92,6 @@ void World::update(float dt)
 	dynamicsWorld->stepSimulation(dt, 10);
 	
 	/// Logging Stuff
-	// Print positions of all objects
 	for (int j = dynamicsWorld->getNumCollisionObjects() - 1; j >= 0; j--)
 	{
 		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[j];

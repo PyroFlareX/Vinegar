@@ -11,7 +11,6 @@ public:
 	
 	void addObject(vn::GameObject& obj);
 
-
 	void update(float dt);
 
 	World(const World& world) = delete;

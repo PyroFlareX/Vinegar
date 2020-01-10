@@ -49,11 +49,12 @@ namespace vn
 	{
 		mat4 matrix = mat4(1.0f);
 
-		matrix = glm::rotate(matrix, glm::radians(entity.rot.x), entity.pos);
-		matrix = glm::rotate(matrix, glm::radians(entity.rot.y), entity.pos);
-		matrix = glm::rotate(matrix, glm::radians(entity.rot.z), entity.pos);
-
 		matrix = glm::translate(matrix, entity.pos);
+
+		//matrix = glm::mat4_cast(entity.qrot);
+		matrix = glm::rotate(matrix, glm::radians(entity.rot.x), { 1, 0, 0 });
+		matrix = glm::rotate(matrix, glm::radians(entity.rot.y), { 0, 1, 0 });
+		matrix = glm::rotate(matrix, glm::radians(entity.rot.z), { 0, 0, 1 });
 
 		matrix = glm::scale(matrix, entity.scale);
 

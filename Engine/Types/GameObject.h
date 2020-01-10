@@ -4,16 +4,18 @@
 
 #include <btBulletCollisionCommon.h>
 #include <btBulletDynamicsCommon.h>
-
+#include <glm/gtx/euler_angles.hpp>
 #include <iostream>
 
 namespace vn
-{	
+{
 	class GameObject
 	{
 	public:
 		GameObject(Transform& trans, btCollisionShape* colShape) : transform(trans)
 		{
+
+
 			this->collider = colShape;
 
 			hasTransform = true;
@@ -28,7 +30,7 @@ namespace vn
 
 		virtual void init()
 		{
-			
+
 		};
 
 		virtual void update()
@@ -44,9 +46,18 @@ namespace vn
 				Transform trans;
 				btTransform t;
 				motionState->getWorldTransform(t);
+
+				//Position
 				trans.pos = vec3(t.getOrigin().getX(), t.getOrigin().getY(), t.getOrigin().getZ());
+
+				//Rotation (quaternion to Euler Angles)
 				btQuaternion quat = t.getRotation();
-				quat.getEulerZYX(trans.rot.z, trans.rot.y, trans.rot.x);
+				glm::quat q(quat.getW(), -quat.getX(), -quat.getY(), -quat.getZ());
+				trans.rot = glm::eulerAngles(q);
+				trans.rot = vec3(-trans.rot.x, -trans.rot.y, -trans.rot.z);
+				trans.rot = glm::degrees(trans.rot);
+
+				//Scale
 				trans.scale = vec3(collider->getLocalScaling().getX(), collider->getLocalScaling().getY(), collider->getLocalScaling().getZ());
 				transform = trans;
 			}
@@ -70,5 +81,6 @@ namespace vn
 		bool hasTransform = false;
 
 		Transform transform;
+		
 	};
 }

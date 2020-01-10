@@ -5,7 +5,7 @@
 GameState::GameState(Application& app)	:	Basestate(app)
 {
 	app.getCam().follow(m_player);
-
+	
 	static int x = 0;
 	glm::vec3 cubePositions[] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
