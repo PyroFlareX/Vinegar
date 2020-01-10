@@ -1,51 +1,27 @@
 #pragma once
-/*
-#include "../Resources/Texture.h"
-#include <vector>
+
 #include <unordered_map>
-#include <array>
-//#include "../../mesh.h"
-//#include "../World/Block/Block.h"
 
-class TextureManager
+template<typename T>
+class Registry
 {
 public:
-	TextureManager();
+	Registry()
+	{
 
-	void addImg(sf::Image img, const std::string& texName);
+	}
 
-	sf::Image& getSheet();
-	std::array<float, 8> getTexCoords(const std::string& texName);
+	void addToRegistry(T res, const std::string& resName)
+	{
+		m_registry.insert({ resName, res });
+	}
 
-	~TextureManager();
+	T& getAsset(const std::string& resName)
+	{
+		return m_registry.find(resName)->second;
+	}
+
+	~Registry() = default;
 private:
-	void buildTextureSheet();
-
-	std::unordered_map<std::string, std::array<float, 8>> m_blockTexCoordsMap;
-	std::vector<std::pair<sf::Image, std::string>> imgs;
-	sf::Image sheet;
+	std::unordered_map<std::string, T> m_registry;
 };
-
-/*class BlockManager
-{
-public:
-	BlockManager();
-
-	void addBlock(Block& block, const std::string& blockName);
-
-	Block& getBlock(const std::string& blockName);
-
-	~BlockManager();
-private:
-
-	std::unordered_map<std::string, Block> m_blockMap;
-};
-*/
-#ifndef _res
-#define _res
-namespace resources
-{
-	//extern TextureManager TexManager;
-	//extern BlockManager BlockDatabase;
-}
-#endif

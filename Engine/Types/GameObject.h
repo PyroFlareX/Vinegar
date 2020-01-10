@@ -14,8 +14,6 @@ namespace vn
 	public:
 		GameObject(Transform& trans, btCollisionShape* colShape) : transform(trans)
 		{
-
-
 			this->collider = colShape;
 
 			hasTransform = true;

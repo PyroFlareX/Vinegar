@@ -101,6 +101,7 @@ void World::update(float dt)
 		if (body && body->getMotionState())
 		{
 			body->getMotionState()->getWorldTransform(trans);
+			
 		}
 		else
 		{
