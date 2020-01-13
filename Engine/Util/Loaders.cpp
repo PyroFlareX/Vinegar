@@ -126,7 +126,7 @@ namespace vn
 		std::ifstream in(filepath);
 		if (!in.is_open())
 		{
-			throw std::runtime_error("Unable to open file: " + filepath);
+			throw std::runtime_error("Unable to open file: " + filepath);	//Error Handling
 		}
 		in >> level;
 		in.close();
@@ -158,6 +158,7 @@ namespace vn
 		int index = 0;
 		for (auto object : gameObjects)
 		{
+			//Nesting JSON
 			nlohmann::json j;
 			Transform t = object.getCurrentTransform();
 			j["px"] = t.pos.x;
@@ -169,7 +170,8 @@ namespace vn
 			j["sx"] = t.scale.x;
 			j["sy"] = t.scale.y;
 			j["sz"] = t.scale.z;
-			
+			j["mass"] = object.mass;
+
 			level["object" + std::to_string(index)] = j;
 			index++;
 		}
