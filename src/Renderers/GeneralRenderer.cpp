@@ -5,14 +5,13 @@
 GeneralRenderer::GeneralRenderer()
 {
 	img.loadFromFile("res/container.jpg");
-	//img = resources::TexManager.getSheet();
 
 	m_shader.load("res/Shaders/model.vs", "res/Shaders/model.fs");
 	m_lampshader.load("res/Shaders/lamp.vs", "res/Shaders/lamp.fs");
 	
 	tex.loadFromImage(img);
 	srand(rand() * rand() - 2 * rand());
-	int choice = 1;
+	int choice = 0;
 	std::cout << "Pick Model: \n\t1. Sphere\n\t2. Cube\n\t3. Monkey\n\t4. Torus" << std::endl;
 
 	switch (choice)
