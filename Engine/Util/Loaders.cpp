@@ -3,6 +3,8 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "../Resources/tiny_obj_loader.h"
 
+#include <iomanip>
+
 namespace vn
 {
 	Mesh vn::loadMeshFromObj(const std::string& filepath)
@@ -116,5 +118,65 @@ namespace vn
 
 			return objMesh;
 		}
+	}
+
+	void loadStateFromFile(const std::string& filepath, std::vector<GameObject>& gameObjects)
+	{
+		nlohmann::json level;
+		std::ifstream in(filepath);
+		if (!in.is_open())
+		{
+			throw std::runtime_error("Unable to open file: " + filepath);
+		}
+		in >> level;
+		in.close();
+
+		for (auto& j : level)
+		{
+			Transform t;
+
+			t.pos.x = j["px"];
+			t.pos.y = j["py"];
+			t.pos.z = j["pz"];
+			t.rot.x = j["rx"];
+			t.rot.y = j["ry"];
+			t.rot.z = j["rz"];
+			t.scale.x = j["sx"];
+			t.scale.y = j["sy"];
+			t.scale.z = j["sz"];
+
+			btCollisionShape* shape = new btSphereShape(1.0f);
+			GameObject obj(t, shape);
+			gameObjects.emplace_back(obj);
+		}
+
+	}
+
+	void saveStateToFile(const std::string& filepath, std::vector<GameObject>& gameObjects)
+	{
+		nlohmann::json level;
+		int index = 0;
+		for (auto object : gameObjects)
+		{
+			nlohmann::json j;
+			Transform t = object.getCurrentTransform();
+			j["px"] = t.pos.x;
+			j["py"] = t.pos.y;
+			j["pz"] = t.pos.z;
+			j["rx"] = t.rot.x;
+			j["ry"] = t.rot.y;
+			j["rz"] = t.rot.z;
+			j["sx"] = t.scale.x;
+			j["sy"] = t.scale.y;
+			j["sz"] = t.scale.z;
+			
+			level["object" + std::to_string(index)] = j;
+			index++;
+		}
+
+
+		std::ofstream out(filepath);
+		out << std::setw(4) << level << std::endl;
+		out.close();
 	}
 }

@@ -15,7 +15,7 @@ namespace vn
 		GameObject(Transform& trans, btCollisionShape* colShape) : transform(trans)
 		{
 			this->collider = colShape;
-
+			
 			hasTransform = true;
 			mass = 1.0f;
 			btQuaternion quat(transform.rot.y, transform.rot.x, transform.rot.z);

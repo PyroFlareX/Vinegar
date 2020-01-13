@@ -6,7 +6,9 @@
 #include <stdexcept>
 #include <iostream>
 
+#include "../Types/GameObject.h"
 #include "../Resources/Mesh.h"
+#include "../nlohmann/json.h"
 
 namespace vn
 {
@@ -27,5 +29,6 @@ namespace vn
 
 	Mesh loadMeshFromObj(const std::string& filepath);
 	
-
+	void loadStateFromFile(const std::string& filepath, std::vector<GameObject>& gameObjects);
+	void saveStateToFile(const std::string& filepath, std::vector<GameObject>& gameObjects);
 }

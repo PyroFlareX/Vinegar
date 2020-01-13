@@ -5,9 +5,9 @@
 GameState::GameState(Application& app)	:	Basestate(app)
 {
 	app.getCam().follow(m_player);
-	
-	static int x = 0;
-	glm::vec3 cubePositions[] = {
+
+	//Original Code For Setting Positions
+	/*glm::vec3 cubePositions[] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
 		glm::vec3(2.0f,  5.0f, -15.0f),
 		glm::vec3(-2.0f, 2.0f, -3.0f),
@@ -35,12 +35,20 @@ GameState::GameState(Application& app)	:	Basestate(app)
 		m_gameObjects.emplace_back(gameobject);
 		m_world.addObject(gameobject);
 	}
+	//vn::saveStateToFile("res/Levels/Test/Test.json", m_gameObjects);*/
 
+
+	//Loads GameObjects
+	vn::loadStateFromFile("res/Levels/Test/Test.json", m_gameObjects);
+	for (auto& gobj : m_gameObjects)
+	{
+		m_world.addObject(gobj);
+	}
 }
 
 GameState::~GameState()
 {
-
+	vn::saveStateToFile("res/Levels/TestEnd/TestEnd.json", m_gameObjects);
 }
 
 bool GameState::input()
