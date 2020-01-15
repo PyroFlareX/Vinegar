@@ -37,6 +37,8 @@ GameState::GameState(Application& app)	:	Basestate(app)
 	}
 	//vn::saveStateToFile("res/Levels/Test/Test.json", m_gameObjects);*/
 
+	//Temporary 
+	
 
 	//Loads GameObjects
 	vn::loadStateFromFile("res/Levels/Test/Test.json", m_gameObjects);
@@ -48,6 +50,7 @@ GameState::GameState(Application& app)	:	Basestate(app)
 
 GameState::~GameState()
 {
+	//res/Levels/TestEnd/TestEnd.json
 	vn::saveStateToFile("res/Levels/TestEnd/TestEnd.json", m_gameObjects);
 }
 
@@ -80,7 +83,8 @@ void GameState::render(Renderer* renderer)
 {		
 	for (auto& obj : m_gameObjects)
 	{
-		renderer->drawObject(obj.getCurrentTransform());
+		obj.getCurrentTransform();
+		renderer->drawObject(obj);
 	}
 }
 

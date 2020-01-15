@@ -7,6 +7,7 @@
 #include "../Player.h"
 #include "../Application.h"
 #include "../Backends/Input.h"
+#include "../../Engine/Registries/ResourceManager.h"
 #include "../../Engine/Engine.h"
 
 class GameState : public Basestate

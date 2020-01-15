@@ -35,7 +35,7 @@ void Renderer::drawCube(vn::Transform& entity)
 	m_cubeRenderer.addCube(entity);
 }
 
-void Renderer::drawObject(vn::Transform& entity)
+void Renderer::drawObject(vn::GameObject& entity)
 {
 	m_generalRenderer.addInstance(entity);
 }

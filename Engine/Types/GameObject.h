@@ -22,6 +22,8 @@ namespace vn
 			btVector3 pos(transform.pos.x, transform.pos.y, transform.pos.z);
 			motionState = new btDefaultMotionState(btTransform(quat, pos));
 
+			model_id = 0;
+
 			init();
 		};
 
@@ -36,7 +38,7 @@ namespace vn
 
 		};
 
-		// @Brief Returns the current Transform (internal engine) of the oject so it may be used in graphics
+		// @Brief Returns the current Transform (internal engine) of the object so it may be used in graphics
 		Transform& getCurrentTransform()
 		{
 			if (!hasTransform)
@@ -64,14 +66,13 @@ namespace vn
 			return transform;
 		}
 
-
-
 		btMotionState*		motionState;
 		btCollisionShape*	collider;
 		btRigidBody*		rigidBody;
 		float				mass;
 
-		//Model m_model;
+		int model_id = 0;
+		int texture_id = 0;
 
 		virtual ~GameObject() = default;
 	private:

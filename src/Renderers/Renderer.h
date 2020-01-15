@@ -14,7 +14,7 @@ class Renderer
         Renderer();
 
 		void drawCube(vn::Transform& entity);
-		void drawObject(vn::Transform& entity);
+		void drawObject(vn::GameObject& entity);
 		void doCompute();
 		void render(Camera& cam);
 		void finish();

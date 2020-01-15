@@ -9,18 +9,18 @@ namespace vn
 	public:
 		Registry() = default;
 
-		void addToRegistry(T res, const std::string& resName)
+		void addToRegistry(T res, const int& id)
 		{
-			m_registry.insert({ resName, res });
+			m_registry.insert({ id, res });
 		}
 
-		T& getAsset(const std::string& resName)
+		T& getAsset(const int& id)
 		{
-			return m_registry.find(resName)->second;
+			return m_registry.find(id)->second;
 		}
 
 		~Registry() = default;
 	private:
-		std::unordered_map<std::string, T> m_registry;
+		std::unordered_map<int, T> m_registry;
 	};
 }

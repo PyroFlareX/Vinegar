@@ -144,9 +144,14 @@ namespace vn
 			t.scale.x = j["sx"];
 			t.scale.y = j["sy"];
 			t.scale.z = j["sz"];
-
+			
 			btCollisionShape* shape = new btSphereShape(1.0f);
 			GameObject obj(t, shape);
+
+			obj.mass = j["mass"];
+			obj.texture_id = j["texture_id"];
+			obj.model_id = j["model_id"];
+
 			gameObjects.emplace_back(obj);
 		}
 
@@ -171,6 +176,8 @@ namespace vn
 			j["sy"] = t.scale.y;
 			j["sz"] = t.scale.z;
 			j["mass"] = object.mass;
+			j["texture_id"] = object.texture_id;
+			j["model_id"] = object.model_id;
 
 			level["object" + std::to_string(index)] = j;
 			index++;
